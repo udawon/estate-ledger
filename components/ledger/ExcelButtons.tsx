@@ -1,0 +1,97 @@
+'use client';
+
+import { useRef, useState } from 'react';
+import * as XLSX from 'xlsx';
+import { Download, Upload, FileDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+interface ExcelButtonsProps {
+  // 내보내기: 현재 테이블 데이터
+  data: Record<string, unknown>[];
+  filename: string;
+  // 가져오기: 파싱된 행 배열 콜백
+  onImport?: (rows: Record<string, unknown>[]) => Promise<void>;
+  // 템플릿 내려받기: 컬럼 헤더 배열
+  templateHeaders?: string[];
+}
+
+export function ExcelButtons({ data, filename, onImport, templateHeaders }: ExcelButtonsProps) {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [importing, setImporting] = useState(false);
+
+  // ─── 내보내기 ──────────────────────────────────────────
+  function handleExport() {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, '매물');
+    XLSX.writeFile(wb, `${filename}_${new Date().toISOString().slice(0, 10)}.xlsx`);
+  }
+
+  // ─── 템플릿 내려받기 (헤더 행만 있는 빈 시트) ──────────
+  function handleTemplate() {
+    if (!templateHeaders) return;
+    const ws = XLSX.utils.aoa_to_sheet([templateHeaders]);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, '매물');
+    XLSX.writeFile(wb, `${filename}_템플릿.xlsx`);
+  }
+
+  // ─── 가져오기 (xlsx/csv 모두 지원) ────────────────────
+  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file || !onImport) return;
+
+    setImporting(true);
+    try {
+      const arrayBuf = await file.arrayBuffer();
+      const wb = XLSX.read(new Uint8Array(arrayBuf), { type: 'array', codepage: 65001 });
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(ws) as Record<string, unknown>[];
+      await onImport(rows);
+    } finally {
+      setImporting(false);
+      e.target.value = '';
+    }
+  }
+
+  return (
+    <div className="flex items-center gap-2 flex-wrap">
+      {/* 내보내기 */}
+      <Button variant="outline" size="sm" onClick={handleExport} className="gap-1.5">
+        <Download className="w-3.5 h-3.5" />
+        엑셀 내보내기
+      </Button>
+
+      {/* 템플릿 내려받기 */}
+      {templateHeaders && (
+        <Button variant="outline" size="sm" onClick={handleTemplate} className="gap-1.5">
+          <FileDown className="w-3.5 h-3.5" />
+          템플릿 내려받기
+        </Button>
+      )}
+
+      {/* 가져오기 */}
+      {onImport && (
+        <>
+          <Button
+            variant="outline"
+            size="sm"
+            disabled={importing}
+            onClick={() => fileRef.current?.click()}
+            className="gap-1.5"
+          >
+            <Upload className="w-3.5 h-3.5" />
+            {importing ? '가져오는 중...' : '엑셀/CSV 가져오기'}
+          </Button>
+          <input
+            ref={fileRef}
+            type="file"
+            accept=".xlsx,.xls,.csv"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+        </>
+      )}
+    </div>
+  );
+}

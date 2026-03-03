@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# venv
+.venv/
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/*.json
+.streamlit/*.yaml
+
+# SQLite DB & 백업(원하면)
+*.db
+*.db-bak
+backup_*.db
+
+# OS / 기타
+.DS_Store
+Thumbs.db

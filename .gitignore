@@ -39,3 +39,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 공공 API 응답 캐시
+.cache/
+
+# 매물장 SQLite DB
+/data/*.db
+
+# Claude Code / bkit 개인 설정
+.claude/
+.bkit/
+.bkit-memory.json
+.playwright-mcp/
+
+# 개발 중 캡처한 스크린샷
+*.png
+
+# 임시 디버그 스크립트
+debug_seongsu.mjs
