@@ -43,8 +43,10 @@ next-env.d.ts
 # 공공 API 응답 캐시
 .cache/
 
-# 매물장 SQLite DB
+# 매물장 SQLite DB (WAL 모드 파생 파일 포함)
 /data/*.db
+/data/*.db-shm
+/data/*.db-wal
 
 # Claude Code / bkit 개인 설정
 .claude/
