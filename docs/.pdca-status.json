@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-03T13:06:51.042Z",
+  "lastUpdated": "2026-03-03T13:20:05.605Z",
   "activeFeatures": [
     "claude-estate",
     "TeamCreate — Gap Analysis 실행",
@@ -28,7 +28,8 @@
     "(ledger)",
     "change-password",
     "demo-login",
-    "me"
+    "me",
+    "portfolio-deployment Gap 분석"
   ],
   "primaryFeature": "claude-estate",
   "features": {
@@ -386,6 +387,20 @@
         "lastUpdated": "2026-03-03T02:13:50.460Z"
       },
       "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\api\\auth\\me\\route.ts"
+    },
+    "portfolio-deployment Gap 분석": {
+      "phase": "act",
+      "phaseNumber": 5,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-03T13:20:05.603Z",
+        "lastUpdated": "2026-03-03T13:20:05.604Z"
+      },
+      "previousPhase": "check",
+      "autoAdvanced": true
     }
   },
   "pipeline": {
@@ -396,7 +411,7 @@
   "session": {
     "startedAt": "2026-03-02T02:11:35.406Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-03T13:06:51.042Z"
+    "lastActivity": "2026-03-03T13:20:05.605Z"
   },
   "history": [
     {
@@ -3415,6 +3430,12 @@
       "timestamp": "2026-03-03T13:06:51.042Z",
       "feature": "ledger",
       "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-03T13:20:05.604Z",
+      "feature": "portfolio-deployment Gap 분석",
+      "phase": "act",
       "action": "updated"
     }
   ]

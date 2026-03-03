@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-03T02:14:56.312Z",
+  "timestamp": "2026-03-03T13:11:32.967Z",
   "reason": "compaction",
   "status": {
     "version": "2.0",
-    "lastUpdated": "2026-03-03T02:14:55.341Z",
+    "lastUpdated": "2026-03-03T13:06:51.042Z",
     "activeFeatures": [
       "claude-estate",
       "TeamCreate — Gap Analysis 실행",
@@ -44,9 +44,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T02:30:08.584Z",
-          "lastUpdated": "2026-03-03T02:13:35.297Z"
+          "lastUpdated": "2026-03-03T12:46:24.601Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\session.ts"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\password.ts"
       },
       "TeamCreate — Gap Analysis 실행": {
         "phase": "act",
@@ -71,9 +71,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T02:37:54.860Z",
-          "lastUpdated": "2026-03-02T13:55:56.638Z"
+          "lastUpdated": "2026-03-03T11:24:22.304Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\engine\\job-demand.ts"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\engine\\index.ts"
       },
       "analyze": {
         "phase": "do",
@@ -110,9 +110,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T02:40:11.193Z",
-          "lastUpdated": "2026-03-03T01:59:35.773Z"
+          "lastUpdated": "2026-03-03T12:45:16.876Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(landing)\\layout.tsx"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(landing)\\page.tsx"
       },
       "analysis": {
         "phase": "do",
@@ -123,9 +123,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T02:40:34.131Z",
-          "lastUpdated": "2026-03-03T01:46:39.722Z"
+          "lastUpdated": "2026-03-03T05:44:16.149Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(analysis)\\analysis\\page.tsx"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\components\\analysis\\ScoreCard.tsx"
       },
       "(analysis)": {
         "phase": "do",
@@ -149,7 +149,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T02:41:56.194Z",
-          "lastUpdated": "2026-03-03T01:47:07.973Z"
+          "lastUpdated": "2026-03-03T04:30:52.806Z"
         },
         "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(analysis)\\analysis\\results\\page.tsx"
       },
@@ -162,9 +162,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T04:11:31.417Z",
-          "lastUpdated": "2026-03-02T14:18:39.914Z"
+          "lastUpdated": "2026-03-03T05:18:24.707Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\api\\kosis.ts"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\api\\kakao.ts"
       },
       "broker-ledger-v2": {
         "phase": "do",
@@ -243,9 +243,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:49:04.492Z",
-          "lastUpdated": "2026-03-03T02:08:11.438Z"
+          "lastUpdated": "2026-03-03T12:46:51.769Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\db\\index.ts"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\lib\\db\\seed.ts"
       },
       "login": {
         "phase": "do",
@@ -256,9 +256,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:49:47.119Z",
-          "lastUpdated": "2026-03-03T02:14:55.341Z"
+          "lastUpdated": "2026-03-03T12:46:35.861Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\login\\page.tsx"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\api\\auth\\login\\route.ts"
       },
       "logout": {
         "phase": "do",
@@ -282,7 +282,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:49:53.174Z",
-          "lastUpdated": "2026-03-02T23:17:34.600Z"
+          "lastUpdated": "2026-03-03T12:46:00.717Z"
         },
         "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(ledger)\\listings\\sales\\page.tsx"
       },
@@ -295,7 +295,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:50:08.209Z",
-          "lastUpdated": "2026-03-02T21:50:16.409Z"
+          "lastUpdated": "2026-03-03T12:44:51.190Z"
         },
         "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\api\\listings\\rentals\\[id]\\route.ts"
       },
@@ -308,7 +308,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:50:09.610Z",
-          "lastUpdated": "2026-03-02T23:17:40.603Z"
+          "lastUpdated": "2026-03-03T12:46:04.431Z"
         },
         "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(ledger)\\listings\\shops\\page.tsx"
       },
@@ -321,7 +321,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:50:12.398Z",
-          "lastUpdated": "2026-03-02T23:17:48.080Z"
+          "lastUpdated": "2026-03-03T12:46:07.847Z"
         },
         "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(ledger)\\listings\\rentals\\page.tsx"
       },
@@ -334,9 +334,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:50:42.447Z",
-          "lastUpdated": "2026-03-03T02:14:25.195Z"
+          "lastUpdated": "2026-03-03T13:06:51.042Z"
         },
-        "lastFile": "C:\\Users\\udawon\\claude-estate\\components\\ledger\\ChangePasswordDialog.tsx"
+        "lastFile": "C:\\Users\\udawon\\claude-estate\\components\\ledger\\RentalTable.tsx"
       },
       "(ledger)": {
         "phase": "do",
@@ -347,7 +347,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-02T21:50:42.852Z",
-          "lastUpdated": "2026-03-03T01:59:25.435Z"
+          "lastUpdated": "2026-03-03T11:24:16.565Z"
         },
         "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\(ledger)\\layout.tsx"
       },
@@ -360,7 +360,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-03-03T02:08:44.252Z",
-          "lastUpdated": "2026-03-03T02:14:00.777Z"
+          "lastUpdated": "2026-03-03T12:46:41.294Z"
         },
         "lastFile": "C:\\Users\\udawon\\claude-estate\\app\\api\\auth\\change-password\\route.ts"
       },
@@ -399,7 +399,7 @@
     "session": {
       "startedAt": "2026-03-02T02:11:35.406Z",
       "onboardingCompleted": false,
-      "lastActivity": "2026-03-03T02:14:55.341Z"
+      "lastActivity": "2026-03-03T13:06:51.042Z"
     },
     "history": [
       {
@@ -2439,6 +2439,984 @@
       {
         "timestamp": "2026-03-03T02:14:55.341Z",
         "feature": "login",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:16:58.696Z",
+        "feature": "(ledger)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:17:02.888Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:17:07.555Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:17:18.527Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:19:34.277Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:21:23.675Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:22:43.629Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:24:02.925Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:24:41.157Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:28:40.947Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:33:51.694Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:39:43.742Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:39:48.365Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:39:54.372Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:00.530Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:07.171Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:12.012Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:17.670Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:22.599Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:27.574Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:31.829Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:36.193Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:41.681Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:46.953Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:51.606Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:40:56.656Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:41:01.708Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:42:12.636Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:42:20.598Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:42:25.787Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:42:33.126Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:45:50.299Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:45:58.814Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:46:07.650Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:49:31.454Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:51:22.072Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:51:26.185Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:51:33.332Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:51:39.267Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:51:45.536Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:51:52.066Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:51:57.159Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:52:00.988Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:52:04.412Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:52:08.326Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:52:14.304Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:52:20.345Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:54:06.072Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:54:10.196Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:55:00.341Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:56:12.226Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:56:16.634Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T02:56:22.773Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:24:15.697Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:24:26.982Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:25:16.244Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:27:29.069Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:27:34.707Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:28:52.753Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:32:38.826Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:32:56.144Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:34:49.516Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:34:50.814Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:35:06.850Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:35:16.459Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:35:27.333Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:35:28.571Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:38:23.321Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:38:26.966Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:38:28.290Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:38:37.730Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:38:45.098Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:38:54.005Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:39:02.415Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:39:09.507Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:39:15.576Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:43:42.243Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:43:46.525Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:43:51.714Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:43:55.558Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:43:59.401Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:44:09.700Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:44:13.654Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:44:17.830Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:44:26.809Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:49:20.658Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:49:40.698Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:49:58.499Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:22.711Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:28.543Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:40.624Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:41.492Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:42.417Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:48.434Z",
+        "feature": "claude-estate",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:51.882Z",
+        "feature": "claude-estate",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T03:58:55.137Z",
+        "feature": "claude-estate",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:02:45.094Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:06:20.651Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:06:57.259Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:09:24.822Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:09:28.866Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:10:01.975Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:11:50.420Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:13:18.233Z",
+        "feature": "results",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:14:05.458Z",
+        "feature": "results",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:16:36.258Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:16:43.479Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:19:21.078Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:19:26.353Z",
+        "feature": "results",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:19:34.773Z",
+        "feature": "results",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:30:35.224Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:30:47.207Z",
+        "feature": "results",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T04:30:52.806Z",
+        "feature": "results",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:04:22.126Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:07:14.183Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:09:31.748Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:09:38.643Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:12:03.519Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:18:24.707Z",
+        "feature": "api",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:18:35.816Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:18:39.814Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:32:57.856Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:44:16.149Z",
+        "feature": "analysis",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:44:18.509Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:47:13.628Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T05:48:00.402Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T06:04:37.682Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T06:05:08.247Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T06:05:32.013Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T06:15:46.534Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T06:15:55.747Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T06:16:04.089Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T06:16:11.685Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T11:24:11.156Z",
+        "feature": "claude-estate",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T11:24:13.767Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T11:24:16.565Z",
+        "feature": "(ledger)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T11:24:19.138Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T11:24:22.304Z",
+        "feature": "engine",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T11:24:39.106Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:40:08.657Z",
+        "feature": "db",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:40:50.914Z",
+        "feature": "db",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:41:08.833Z",
+        "feature": "db",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:41:21.974Z",
+        "feature": "db",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:41:34.539Z",
+        "feature": "db",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:41:43.812Z",
+        "feature": "sales",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:41:53.109Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:41:59.355Z",
+        "feature": "shops",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:44:30.975Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:44:40.505Z",
+        "feature": "rentals",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:44:51.190Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:45:08.471Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:45:16.876Z",
+        "feature": "(landing)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:00.717Z",
+        "feature": "sales",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:04.431Z",
+        "feature": "shops",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:07.847Z",
+        "feature": "rentals",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:19.887Z",
+        "feature": "claude-estate",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:24.601Z",
+        "feature": "claude-estate",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:35.861Z",
+        "feature": "login",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:41.294Z",
+        "feature": "change-password",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T12:46:51.769Z",
+        "feature": "db",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T13:06:26.405Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T13:06:42.666Z",
+        "feature": "ledger",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-03-03T13:06:51.042Z",
+        "feature": "ledger",
         "phase": "do",
         "action": "updated"
       }
