@@ -36,7 +36,7 @@ async function geocodeAddress(address: string): Promise<{ lat: number; lng: numb
     const query = encodeURIComponent(address);
     const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1&accept-language=ko`;
     const res = await fetch(url, {
-      headers: { 'User-Agent': 'claude-estate/1.0 (contact@claude-estate.local)' },
+      headers: { 'User-Agent': 'estate-ledger/1.0 (contact@estate-ledger.local)' },
       signal: AbortSignal.timeout(5000),
     });
 

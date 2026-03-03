@@ -355,7 +355,7 @@ export default function LandingPage() {
                 <BarChart3 className="w-4 h-4" style={{ color: '#818cf8' }} />
               </div>
               <div>
-                <p className="text-sm font-bold text-white leading-tight">부동산 통합관리 시스템</p>
+                <p className="text-sm font-bold text-white leading-tight">estate-ledger</p>
                 <p className="text-xs" style={{ color: '#475569' }}>매물장 + 입지분석 원스톱</p>
               </div>
             </div>

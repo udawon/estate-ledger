@@ -58,7 +58,7 @@ export default function LedgerLayout({
             <div className="w-6 h-6 rounded-md bg-indigo-500 flex items-center justify-center">
               <TrendingUp className="w-3 h-3 text-white" />
             </div>
-            <span className="font-bold text-sm text-white">claude-estate</span>
+            <span className="font-bold text-sm text-white">estate-ledger</span>
           </div>
           {/* 모바일 데모 배지 */}
           {isDemo && (
