@@ -48,7 +48,7 @@ export function Sidebar({ open = false, onClose, isDemo = false }: SidebarProps)
           <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center shadow-md shadow-indigo-500/30">
             <TrendingUp className="w-4 h-4 text-white" />
           </div>
-          <span className="font-bold text-sm text-white tracking-tight">estate-ledger</span>
+          <span className="font-bold text-sm text-white tracking-tight">Estate-Ledger</span>
         </Link>
         {/* 모바일 전용 닫기 버튼 */}
         {onClose && (
@@ -121,7 +121,7 @@ export function Sidebar({ open = false, onClose, isDemo = false }: SidebarProps)
           <LogOut className="w-4 h-4 shrink-0" />
           로그아웃
         </button>
-        <p className="text-xs text-slate-600 text-center pt-1">estate-ledger · 매물장 v1.0</p>
+        <p className="text-xs text-slate-600 text-center pt-1">Estate-Ledger · 매물장 v1.0</p>
       </div>
     </aside>
   );
