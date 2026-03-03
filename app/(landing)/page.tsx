@@ -37,6 +37,23 @@ export default function LandingPage() {
   const [address, setAddress] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [demoLoading, setDemoLoading] = useState(false);
+
+  // 원클릭 데모 로그인 — 비밀번호 없이 체험 세션 발급
+  async function handleDemoLogin() {
+    setDemoLoading(true);
+    try {
+      const res = await fetch('/api/auth/demo-login', { method: 'POST' });
+      const json = await res.json() as { success: boolean };
+      if (json.success) {
+        router.push('/listings/sales');
+      }
+    } catch {
+      // 실패해도 로그인 페이지로 안내
+    } finally {
+      setDemoLoading(false);
+    }
+  }
 
   // 입지분석 실행: API → sessionStorage → 결과 페이지 이동
   async function handleAnalyze(e: React.FormEvent) {
@@ -441,10 +458,18 @@ export default function LandingPage() {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-auto">
+                <div className="mt-auto space-y-2.5">
+                  {/* 원클릭 데모 체험 버튼 (포트폴리오용) */}
+                  <button className="btn-cta" onClick={handleDemoLogin} disabled={demoLoading}>
+                    {demoLoading
+                      ? <Loader2 className="w-4 h-4 animate-spin" />
+                      : <Zap className="w-4 h-4" />}
+                    {demoLoading ? '데모 세션 발급 중...' : '데모 체험하기 (로그인 불필요)'}
+                    {!demoLoading && <ArrowRight className="w-4 h-4" />}
+                  </button>
                   <Link href="/login">
-                    <button className="btn-cta">
-                      매물장 관리 페이지로 이동
+                    <button className="btn-ghost">
+                      관리자 로그인
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </Link>

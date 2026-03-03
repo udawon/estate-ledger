@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const body = (await req.json()) as { password?: string };
 
-    if (!body.password || !checkAdminPassword(body.password)) {
+    if (!body.password || !(await checkAdminPassword(body.password))) {
       return NextResponse.json(
         { success: false, error: '비밀번호가 올바르지 않습니다.' },
         { status: 401 }

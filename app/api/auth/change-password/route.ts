@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!checkAdminPassword(body.currentPassword)) {
+    if (!(await checkAdminPassword(body.currentPassword))) {
       return NextResponse.json(
         { success: false, error: '현재 비밀번호가 올바르지 않습니다.' },
         { status: 401 }
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     }
 
     // 새 비밀번호 저장
-    setStoredHash(hashPassword(body.newPassword));
+    await setStoredHash(hashPassword(body.newPassword));
 
     return NextResponse.json({ success: true });
   } catch {

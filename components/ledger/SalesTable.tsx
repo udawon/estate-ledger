@@ -212,6 +212,9 @@ export function SalesTable({ initialData }: Props) {
     if (json.success) setData(json.data);
   }, []);
 
+  // 마운트 시 세션 scope에 맞는 데이터 로드 (SSR initialData는 scope가 다를 수 있음)
+  useEffect(() => { loadData(); }, [loadData]);
+
   // ── 엑셀/CSV 가져오기 ──────────────────────────────────
   const handleImport = useCallback(async (rows: Record<string, unknown>[]) => {
     let ok = 0, fail = 0;

@@ -59,3 +59,5 @@ next-env.d.ts
 
 # 임시 디버그 스크립트
 debug_seongsu.mjs
+
+.vercel

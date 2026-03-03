@@ -4,8 +4,8 @@ import { ShoppingBag } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
-export default function ShopsPage() {
-  const listings = getShops();
+export default async function ShopsPage() {
+  const listings = await getShops();
 
   return (
     <div className="flex-1">

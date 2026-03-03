@@ -4,8 +4,8 @@ import { Home } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
-export default function RentalsPage() {
-  const listings = getRentals();
+export default async function RentalsPage() {
+  const listings = await getRentals();
 
   return (
     <div className="flex-1">

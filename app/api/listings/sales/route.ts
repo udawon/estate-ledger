@@ -1,18 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { getSales, createSale } from '@/lib/db/sales';
+import { verifyToken, COOKIE_NAME } from '@/lib/auth';
 import type { SaleListingInput } from '@/types/listings';
+
+// 세션에서 scope 추출
+async function getScope(): Promise<'admin' | 'demo'> {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(COOKIE_NAME)?.value ?? '';
+  const session = await verifyToken(token);
+  return session?.role ?? 'demo';
+}
 
 // GET /api/listings/sales — 목록 조회
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const filter = {
-    search: searchParams.get('search') ?? undefined,
+    search:   searchParams.get('search')   ?? undefined,
     dateFrom: searchParams.get('dateFrom') ?? undefined,
-    dateTo: searchParams.get('dateTo') ?? undefined,
+    dateTo:   searchParams.get('dateTo')   ?? undefined,
   };
 
   try {
-    const data = getSales(filter);
+    const scope = await getScope();
+    const data = await getSales(filter, scope);
     return NextResponse.json({ success: true, data });
   } catch (err) {
     console.error('[sales GET]', err);
@@ -23,8 +34,9 @@ export async function GET(req: NextRequest) {
 // POST /api/listings/sales — 등록
 export async function POST(req: NextRequest) {
   try {
+    const scope = await getScope();
     const body = await req.json() as SaleListingInput;
-    const item = createSale(body);
+    const item = await createSale(body, scope);
     return NextResponse.json({ success: true, data: item }, { status: 201 });
   } catch (err) {
     console.error('[sales POST]', err);
