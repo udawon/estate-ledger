@@ -55,18 +55,30 @@ export function ExcelButtons({ data, filename, onImport, templateHeaders }: Exce
   }
 
   return (
-    <div className="flex items-center gap-2 flex-wrap">
-      {/* 내보내기 */}
-      <Button variant="outline" size="sm" onClick={handleExport} className="gap-1.5">
-        <Download className="w-3.5 h-3.5" />
-        엑셀 내보내기
+    <div className="flex items-center gap-1.5">
+      {/* 내보내기 — 모바일: 아이콘만 / sm 이상: 텍스트 포함 */}
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleExport}
+        title="엑셀 내보내기"
+        className="gap-1.5 px-2 sm:px-3"
+      >
+        <Download className="w-3.5 h-3.5 shrink-0" />
+        <span className="hidden sm:inline">내보내기</span>
       </Button>
 
       {/* 템플릿 내려받기 */}
       {templateHeaders && (
-        <Button variant="outline" size="sm" onClick={handleTemplate} className="gap-1.5">
-          <FileDown className="w-3.5 h-3.5" />
-          템플릿 내려받기
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleTemplate}
+          title="템플릿 내려받기"
+          className="gap-1.5 px-2 sm:px-3"
+        >
+          <FileDown className="w-3.5 h-3.5 shrink-0" />
+          <span className="hidden sm:inline">템플릿</span>
         </Button>
       )}
 
@@ -78,10 +90,13 @@ export function ExcelButtons({ data, filename, onImport, templateHeaders }: Exce
             size="sm"
             disabled={importing}
             onClick={() => fileRef.current?.click()}
-            className="gap-1.5"
+            title="엑셀/CSV 가져오기"
+            className="gap-1.5 px-2 sm:px-3"
           >
-            <Upload className="w-3.5 h-3.5" />
-            {importing ? '가져오는 중...' : '엑셀/CSV 가져오기'}
+            <Upload className="w-3.5 h-3.5 shrink-0" />
+            <span className="hidden sm:inline">
+              {importing ? '가져오는 중...' : '가져오기'}
+            </span>
           </Button>
           <input
             ref={fileRef}

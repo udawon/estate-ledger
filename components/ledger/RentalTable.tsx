@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {
   Pencil, Trash2, Loader2, MapPin, ChevronDown,
-  RotateCcw, Search, Plus, List,
+  RotateCcw, Search, Plus, List, User, ChevronRight, X,
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -20,7 +20,29 @@ import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table';
 import { ExcelButtons } from './ExcelButtons';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import type { RentalListing } from '@/types/listings';
+
+// ─── 상세보기 행 컴포넌트 ───────────────────────────────
+function DR({ label, value, mono }: { label: string; value?: string | number | null; mono?: boolean }) {
+  const display = value != null && value !== '' ? String(value) : '-';
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wide">{label}</span>
+      <span className={`text-sm text-slate-800 ${mono ? 'font-mono' : ''} ${display !== '-' ? 'font-semibold' : 'text-slate-300 font-normal'}`}>{display}</span>
+    </div>
+  );
+}
+
+// ─── 섹션 구분 헤더 ─────────────────────────────────────
+function SH({ label, color = 'text-slate-400' }: { label: string; color?: string }) {
+  return (
+    <div className="flex items-center gap-2 mb-3">
+      <span className={`text-[10px] font-bold uppercase tracking-widest shrink-0 ${color}`}>{label}</span>
+      <div className="flex-1 h-px bg-slate-100" />
+    </div>
+  );
+}
 
 // ─── 상수 ──────────────────────────────────────────────
 const CATEGORY_OPTIONS = ['월세', '전세'] as const;
@@ -101,6 +123,13 @@ function fmt(v: number | null | undefined): string {
   return v.toLocaleString('ko-KR');
 }
 
+// ─── 전월세 구분별 뱃지 색상 ────────────────────────────
+function categoryColor(cat: string): string {
+  if (cat === '전세') return 'bg-blue-100 text-blue-700';
+  if (cat === '월세') return 'bg-emerald-100 text-emerald-700';
+  return 'bg-slate-100 text-slate-600';
+}
+
 // ─── listing → form 변환 ───────────────────────────────
 function listingToForm(s: RentalListing): FormValues {
   return {
@@ -144,6 +173,7 @@ interface Props { initialData: RentalListing[]; }
 export function RentalTable({ initialData }: Props) {
   const [data, setData]       = useState<RentalListing[]>(initialData);
   const [editing, setEditing] = useState<RentalListing | null>(null);
+  const [detailItem, setDetailItem] = useState<RentalListing | null>(null);
   const [loading, setLoading] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [formOpen, setFormOpen]     = useState(false);
@@ -599,7 +629,7 @@ export function RentalTable({ initialData }: Props) {
 
       {/* ─── 검색 결과 테이블 ─────────────────────────────── */}
       <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
-        <div className="px-5 py-3.5 bg-white border-b border-slate-100 flex items-center justify-between">
+        <div className="px-5 py-3 bg-white border-b border-slate-100 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <div className="w-7 h-7 rounded-lg bg-indigo-100 flex items-center justify-center shadow-sm">
               <List className="w-4 h-4 text-indigo-600" />
@@ -617,8 +647,211 @@ export function RentalTable({ initialData }: Props) {
           />
         </div>
 
-        {/* 수평 스크롤 테이블 */}
-        <div className="overflow-x-auto">
+        {/* ─── 모바일 카드 뷰 (md 미만) ────────────────────── */}
+        <div className="md:hidden divide-y divide-slate-100">
+          {filtered.length === 0 ? (
+            <p className="text-center text-slate-400 py-10 text-sm">등록된 매물이 없습니다.</p>
+          ) : (
+            filtered.map((item) => {
+              const isEditing = editing?.id === item.id;
+              return (
+                <div
+                  key={item.id}
+                  className={`p-4 transition-colors cursor-pointer active:bg-slate-100 ${isEditing ? 'bg-amber-50 border-l-4 border-amber-400' : 'hover:bg-slate-50/60'}`}
+                  onClick={() => setDetailItem(item)}
+                >
+                  {/* 상단: 구분 뱃지 + 건물 뱃지 + ID + 상세보기 힌트 */}
+                  <div className="flex items-center justify-between mb-2.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${categoryColor(item.category)}`}>
+                        {item.category ?? '-'}
+                      </span>
+                      {item.building && (
+                        <span className="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                          {item.building}
+                        </span>
+                      )}
+                      <span className="text-[11px] text-slate-400 font-medium">#{item.id}</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-[10px] text-slate-400">
+                      <span>{item.recv_date ?? '-'}</span>
+                      <ChevronRight className="w-3 h-3 text-slate-300" />
+                    </div>
+                  </div>
+
+                  {/* 주소 */}
+                  <div className="mb-2.5">
+                    <p className="text-sm font-semibold text-slate-800 leading-snug">{item.addr ?? '-'}</p>
+                    {item.unit_no && (
+                      <p className="text-[11px] text-slate-400 mt-0.5">{item.unit_no}호</p>
+                    )}
+                  </div>
+
+                  {/* 핵심 수치 3컬럼 */}
+                  <div className="grid grid-cols-3 divide-x divide-slate-200 bg-slate-50 rounded-lg overflow-hidden mb-2.5 border border-slate-100">
+                    <div className="px-2.5 py-2 text-center">
+                      <p className="text-[10px] text-slate-400 mb-0.5">보증금(만)</p>
+                      <p className="text-[12px] font-bold text-indigo-700">
+                        {item.deposit ? item.deposit.toLocaleString() : '-'}
+                      </p>
+                    </div>
+                    <div className="px-2.5 py-2 text-center">
+                      <p className="text-[10px] text-slate-400 mb-0.5">월세(만)</p>
+                      <p className="text-[12px] font-semibold text-slate-600">
+                        {item.monthly ? item.monthly.toLocaleString() : '-'}
+                      </p>
+                    </div>
+                    <div className="px-2.5 py-2 text-center">
+                      <p className="text-[10px] text-slate-400 mb-0.5">입주</p>
+                      <p className="text-[12px] font-semibold text-slate-600">
+                        {item.move_in || '-'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 고객 정보 */}
+                  {(item.client_name || item.client_phone) && (
+                    <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mb-3">
+                      <User className="w-3 h-3 text-slate-300 shrink-0" />
+                      <span>{item.client_name || '-'}</span>
+                      {item.client_phone && (
+                        <><span className="text-slate-300">·</span><span>{item.client_phone}</span></>
+                      )}
+                    </div>
+                  )}
+
+                  {/* 액션 버튼 (버블링 차단) */}
+                  <div className="grid grid-cols-3 gap-1.5" onClick={(e) => e.stopPropagation()}>
+                    <Link
+                      href={`/analysis?address=${encodeURIComponent(item.addr ?? '')}`}
+                      className="flex items-center justify-center gap-1 text-[11px] font-medium text-emerald-600 bg-emerald-50 border border-emerald-100 rounded-lg py-1.5 hover:bg-emerald-100 transition-colors"
+                    >
+                      <MapPin className="w-3 h-3" />입지분석
+                    </Link>
+                    <button
+                      onClick={() => setEditing(isEditing ? null : item)}
+                      className={`flex items-center justify-center gap-1 text-[11px] font-medium rounded-lg py-1.5 border transition-colors ${
+                        isEditing
+                          ? 'text-amber-700 bg-amber-100 border-amber-200'
+                          : 'text-indigo-600 bg-indigo-50 border-indigo-100 hover:bg-indigo-100'
+                      }`}
+                    >
+                      <Pencil className="w-3 h-3" />{isEditing ? '수정중' : '수정'}
+                    </button>
+                    <button
+                      onClick={() => handleDelete(item.id)}
+                      className="flex items-center justify-center gap-1 text-[11px] font-medium text-red-500 bg-red-50 border border-red-100 rounded-lg py-1.5 hover:bg-red-100 transition-colors"
+                    >
+                      <Trash2 className="w-3 h-3" />삭제
+                    </button>
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        {/* ─── 전월세 상세보기 바텀시트 ────────────────────── */}
+        <Sheet open={detailItem !== null} onOpenChange={(open) => !open && setDetailItem(null)}>
+          <SheetContent side="bottom" className="h-[82vh] flex flex-col rounded-t-2xl px-0 pb-0" showCloseButton={false}>
+            {/* 드래그 핸들 */}
+            <div className="shrink-0 flex justify-center pt-3 pb-0.5">
+              <div className="w-10 h-1 rounded-full bg-slate-200" />
+            </div>
+            {detailItem && (
+              <>
+                {/* 헤더 */}
+                <SheetHeader className="shrink-0 px-5 pb-4 pt-2 border-b border-slate-100">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full shrink-0 ${categoryColor(detailItem.category)}`}>
+                          {detailItem.category}
+                        </span>
+                        {detailItem.building && (
+                          <span className="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 shrink-0">
+                            {detailItem.building}
+                          </span>
+                        )}
+                        <span className="text-[11px] text-slate-400">#{detailItem.id} · {detailItem.recv_date}</span>
+                      </div>
+                      <SheetTitle className="text-[15px] font-bold text-slate-800 leading-snug text-left">
+                        {detailItem.addr}
+                      </SheetTitle>
+                      {detailItem.unit_no && (
+                        <p className="text-[11px] text-slate-400 mt-0.5">{detailItem.unit_no}호</p>
+                      )}
+                    </div>
+                    <button onClick={() => setDetailItem(null)} className="shrink-0 p-1.5 rounded-lg hover:bg-slate-100 text-slate-400">
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                </SheetHeader>
+
+                {/* 스크롤 본문 */}
+                <div className="flex-1 overflow-y-auto px-5 py-5 space-y-6">
+                  {/* 기본정보 */}
+                  <section>
+                    <SH label="기본정보" />
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                      <DR label="계약일" value={detailItem.contract_date} />
+                      <DR label="입주예정일" value={detailItem.move_in_date} />
+                      <DR label="확정일자" value={detailItem.confirm_date} />
+                      <DR label="입주상태" value={detailItem.move_in} />
+                      <DR label="임대인" value={detailItem.lessor} />
+                      <DR label="임차인" value={detailItem.lessee} />
+                    </div>
+                  </section>
+
+                  {/* 금액 */}
+                  <section>
+                    <SH label="금액 (단위: 만원)" color="text-indigo-400" />
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                      <DR label="보증금" value={detailItem.deposit != null ? detailItem.deposit.toLocaleString() : undefined} />
+                      <DR label="월세" value={detailItem.monthly != null ? detailItem.monthly.toLocaleString() : undefined} />
+                      <DR label="관리비" value={detailItem.mng_fee != null ? detailItem.mng_fee.toLocaleString() : undefined} />
+                    </div>
+                  </section>
+
+                  {/* 고객정보 */}
+                  <section>
+                    <SH label="고객정보" color="text-emerald-500" />
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                      <DR label="고객명" value={detailItem.client_name} />
+                      <DR label="연락처" value={detailItem.client_phone} mono />
+                      <DR label="통신사" value={detailItem.carrier} />
+                    </div>
+                    {detailItem.memo && (
+                      <div className="mt-4 p-3.5 bg-slate-50 rounded-xl border border-slate-100">
+                        <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wide mb-1.5">메모</p>
+                        <p className="text-sm text-slate-700 leading-relaxed">{detailItem.memo}</p>
+                      </div>
+                    )}
+                  </section>
+                </div>
+
+                {/* 하단 액션 버튼 */}
+                <div className="shrink-0 px-5 py-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                  <Link
+                    href={`/analysis?address=${encodeURIComponent(detailItem.addr ?? '')}`}
+                    className="flex items-center justify-center gap-1.5 text-sm font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-xl py-3 active:bg-emerald-100 transition-colors"
+                  >
+                    <MapPin className="w-4 h-4" />입지분석
+                  </Link>
+                  <button
+                    onClick={() => { setEditing(detailItem); setDetailItem(null); }}
+                    className="flex items-center justify-center gap-1.5 text-sm font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-xl py-3 active:bg-indigo-100 transition-colors"
+                  >
+                    <Pencil className="w-4 h-4" />수정하기
+                  </button>
+                </div>
+              </>
+            )}
+          </SheetContent>
+        </Sheet>
+
+        {/* ─── 데스크탑 테이블 뷰 (md 이상) ──────────────── */}
+        <div className="hidden md:block overflow-x-auto">
           <Table className="text-xs whitespace-nowrap">
             <TableHeader>
               {/* ── 그룹 헤더 행 ────────────────────────────── */}
