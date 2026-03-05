@@ -753,7 +753,7 @@ export function RentalTable({ initialData }: Props) {
 
         {/* ─── 전월세 상세보기 바텀시트 ────────────────────── */}
         <Sheet open={detailItem !== null} onOpenChange={(open) => !open && setDetailItem(null)}>
-          <SheetContent side="bottom" className="h-[82vh] flex flex-col rounded-t-2xl px-0 pb-0" showCloseButton={false}>
+          <SheetContent side="bottom" className="h-[82vh] flex flex-col rounded-t-2xl px-0 pb-safe" showCloseButton={false}>
             {/* 드래그 핸들 */}
             <div className="shrink-0 flex justify-center pt-3 pb-0.5">
               <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -831,7 +831,7 @@ export function RentalTable({ initialData }: Props) {
                 </div>
 
                 {/* 하단 액션 버튼 */}
-                <div className="shrink-0 px-5 py-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                <div className="shrink-0 px-5 py-3 pb-safe border-t border-slate-100 grid grid-cols-2 gap-2">
                   <Link
                     href={`/analysis?address=${encodeURIComponent(detailItem.addr ?? '')}`}
                     className="flex items-center justify-center gap-1.5 text-sm font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-xl py-3 active:bg-emerald-100 transition-colors"

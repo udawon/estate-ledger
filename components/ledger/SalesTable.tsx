@@ -619,14 +619,14 @@ export function SalesTable({ initialData }: Props) {
             <p className="text-xs font-semibold text-slate-500 mb-3">고객 정보</p>
             <div className="grid grid-cols-2 gap-3">
               {/* 왼쪽 절반: 성명 / 연락처 / 통신사 */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">성명</Label>
-                  <Input {...register('client_name')} className="text-sm" />
+                  <Input {...register('client_name')} />
                 </div>
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">연락처</Label>
-                  <Input {...register('client_phone')} className="text-sm" />
+                  <Input {...register('client_phone')} />
                 </div>
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">통신사</Label>
@@ -913,7 +913,7 @@ export function SalesTable({ initialData }: Props) {
 
         {/* ─── 매매 상세보기 바텀시트 ────────────────────── */}
         <Sheet open={detailItem !== null} onOpenChange={(open) => !open && setDetailItem(null)}>
-          <SheetContent side="bottom" className="h-[82vh] flex flex-col rounded-t-2xl px-0 pb-0" showCloseButton={false}>
+          <SheetContent side="bottom" className="h-[82vh] flex flex-col rounded-t-2xl px-0 pb-safe" showCloseButton={false}>
             {/* 드래그 핸들 */}
             <div className="shrink-0 flex justify-center pt-3 pb-0.5">
               <div className="w-10 h-1 rounded-full bg-slate-200" />
@@ -1006,7 +1006,7 @@ export function SalesTable({ initialData }: Props) {
                   </div>
 
                   {/* 하단 액션 버튼 */}
-                  <div className="shrink-0 px-5 py-3 border-t border-slate-100 grid grid-cols-2 gap-2">
+                  <div className="shrink-0 px-5 py-3 pb-safe border-t border-slate-100 grid grid-cols-2 gap-2">
                     <Link
                       href={`/analysis?address=${encodeURIComponent(detailItem.road_addr ?? '')}`}
                       className="flex items-center justify-center gap-1.5 text-sm font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-xl py-3 active:bg-emerald-100 transition-colors"

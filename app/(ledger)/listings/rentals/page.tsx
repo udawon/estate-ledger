@@ -1,11 +1,18 @@
+import { cookies } from 'next/headers';
 import { getRentals } from '@/lib/db/rentals';
 import { RentalTable } from '@/components/ledger/RentalTable';
 import { Home } from 'lucide-react';
+import { verifyToken, COOKIE_NAME } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
 export default async function RentalsPage() {
-  const listings = await getRentals();
+  // SSR scope 격리: 데모 유저에게 admin 데이터 노출 방지
+  const cookieStore = await cookies();
+  const token = cookieStore.get(COOKIE_NAME)?.value;
+  const payload = token ? await verifyToken(token) : null;
+  const scope = payload?.role === 'demo' ? 'demo' : 'admin';
+  const listings = await getRentals({}, scope);
 
   return (
     <div className="flex-1">

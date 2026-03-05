@@ -1,11 +1,18 @@
+import { cookies } from 'next/headers';
 import { getSales } from '@/lib/db/sales';
 import { SalesTable } from '@/components/ledger/SalesTable';
 import { Building2 } from 'lucide-react';
+import { verifyToken, COOKIE_NAME } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
 export default async function SalesPage() {
-  const listings = await getSales();
+  // SSR scope 격리: 데모 유저에게 admin 데이터 노출 방지
+  const cookieStore = await cookies();
+  const token = cookieStore.get(COOKIE_NAME)?.value;
+  const payload = token ? await verifyToken(token) : null;
+  const scope = payload?.role === 'demo' ? 'demo' : 'admin';
+  const listings = await getSales({}, scope);
 
   return (
     <div className="flex-1">
