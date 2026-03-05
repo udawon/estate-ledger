@@ -41,6 +41,7 @@ export interface AnalysisResult {
   summary: string;              // 한 줄 요약 문구
   analyzedAt: string;           // ISO 8601
   tradeSummary?: TradeSummary;  // 실거래가 (조회 실패 시 undefined)
+  relativeScore?: RelativeScore; // 서울 25개 구 대비 상대 점수
 }
 
 // ─── 실거래가 단건 기록 ─────────────────────────────────
@@ -64,6 +65,13 @@ export interface TradeSummary {
   totalCount: number;          // 최근 3개월 총 거래 건수
   trend: 'up' | 'down' | 'flat'; // 시세 추세
   monthRange: string;          // 조회 기간 (예: "2025.11 ~ 2026.01")
+}
+
+// ─── 상대 점수 (서울 구별 비교) ───────────────────────────
+export interface RelativeScore {
+  percentile: number;   // 0~100 (높을수록 좋음, 85 = 상위 15%)
+  label: string;        // "서울 최상위권", "서울 상위권" 등
+  basis: string;        // "서울 25개 구 평균 기준"
 }
 
 // ─── API 응답 래퍼 ──────────────────────────────────────

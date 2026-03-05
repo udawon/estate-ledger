@@ -69,6 +69,7 @@ function calcLineScore(
 }
 
 // 버스 점수 (15pt): 일반버스 + 광역버스(M버스) 가중 합산 — v3 15pt로 하향 조정
+// 카카오 카테고리에 BT1(버스정류장) 코드 없음 → 키워드 검색 사용
 function calcBusScore(busCount: number, expressBusCount: number): number {
   // 광역버스는 장거리 이동성 → 2배 가중치
   const weighted = busCount + expressBusCount * 2;
@@ -82,10 +83,11 @@ function calcBusScore(busCount: number, expressBusCount: number): number {
 
 // ─── Kakao + TMAP API 기반 실측 점수 계산 ────────────────────
 async function calcFromKakao(lat: number, lng: number): Promise<CategoryScore> {
-  // 병렬: 지하철역(1km), 버스정류장(1km), 광역버스 M버스(1km), 업무지구 통근시간(TMAP)
+  // 병렬: 지하철역(1km), 버스정류장(500m 실측), 광역버스 M버스(1km), 업무지구 통근시간(TMAP)
+  // 버스정류장: 카카오 카테고리에 BT1 코드 없음 → 키워드 '버스 정류장' 사용 (500m = 도보 6분)
   const [subwayRes, busRes, expressBusRes, hubResult] = await Promise.all([
     searchByCategory(KAKAO_CATEGORY.지하철역, lat, lng, 1000, 15),
-    searchByKeyword('정류장',                lat, lng, 1000, 15),
+    searchByKeyword('버스 정류장',           lat, lng,  500, 15),
     searchByKeyword('M버스',                 lat, lng, 1000,  5),
     fetchNearestHub(lat, lng),
   ]);
@@ -124,8 +126,8 @@ async function calcFromKakao(lat: number, lng: number): Promise<CategoryScore> {
   }
 
   if (busCount > 0) {
-    const expressText = expressBus > 0 ? ` · 광역버스 ${expressBus}개` : '';
-    details.push(`반경 1km 버스정류장 ${busCount}개${expressText}`);
+    const expressText = expressBus > 0 ? ` · 광역버스 ${expressBus}개(1km)` : '';
+    details.push(`반경 500m 버스정류장 ${busCount}개${expressText}`);
   }
 
   // 직장 접근성 근거

@@ -10,18 +10,9 @@ import { calcEnvRiskScore }     from './env-risk';
 import { calcFutureValueScore } from './future-value';
 import { calcSupplyScore }      from './supply';
 import { calcPenalty }          from './penalty';
-import { aggregateScore, generateSummary } from './scoring';
+import { aggregateScore, generateSummary, getGrade } from './scoring';
 import type { Grade } from '@/types';
 import { GRADE_CONFIG } from '@/types';
-
-// finalScore 기준 등급 재계산
-function getGrade(score: number): Grade {
-  const grades: Grade[] = ['A', 'B', 'C', 'D', 'F'];
-  for (const grade of grades) {
-    if (score >= GRADE_CONFIG[grade].min) return grade;
-  }
-  return 'F';
-}
 
 import { extractDistrict } from './district-data';
 import { isKakaoConfigured, geocodeByKakao, getRegionCode, searchByKeyword } from '@/lib/api/kakao';

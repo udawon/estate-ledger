@@ -1,6 +1,7 @@
-// ─── 서울 구(區)별 입지 특성 데이터 v4 ──────────────────────
+// ─── 서울 구(區)별 입지 특성 데이터 v4.1 ─────────────────────
 // 7카테고리(A-G) 기준으로 재구조화
 // location_engine_live.md 준수
+// [2025 현행화] GTX·재개발 현황 반영 (2025.03 기준)
 
 export interface DistrictScore {
   transport:   number;  // A. 교통
@@ -23,32 +24,33 @@ export interface DistrictDetails {
 }
 
 // ─── 서울 25개 구 기본 점수 ───────────────────────────────────
+// [2025 현행화] GTX-A 수서~동탄 개통(2024.3), GTX-B 착공(2024.6), GTX-C 기본계획 승인(2024.12) 반영
 export const DISTRICT_SCORES: Record<string, DistrictScore> = {
-  강남구:   { transport: 95, jobDemand: 97, living: 88, education: 97, envRisk: 82, futureValue: 80, supply: 65 },
-  서초구:   { transport: 88, jobDemand: 90, living: 86, education: 92, envRisk: 90, futureValue: 78, supply: 68 },
-  송파구:   { transport: 87, jobDemand: 80, living: 84, education: 83, envRisk: 80, futureValue: 68, supply: 75 },
-  강동구:   { transport: 78, jobDemand: 68, living: 78, education: 72, envRisk: 58, futureValue: 62, supply: 80 },
-  강서구:   { transport: 80, jobDemand: 70, living: 72, education: 68, envRisk: 65, futureValue: 70, supply: 75 },
-  강북구:   { transport: 67, jobDemand: 55, living: 68, education: 72, envRisk: 82, futureValue: 72, supply: 62 },
-  동작구:   { transport: 82, jobDemand: 75, living: 78, education: 75, envRisk: 80, futureValue: 82, supply: 65 },
-  영등포구: { transport: 86, jobDemand: 85, living: 82, education: 68, envRisk: 68, futureValue: 85, supply: 70 },
-  마포구:   { transport: 84, jobDemand: 82, living: 82, education: 75, envRisk: 72, futureValue: 78, supply: 72 },
-  용산구:   { transport: 87, jobDemand: 88, living: 82, education: 75, envRisk: 78, futureValue: 80, supply: 68 },
-  종로구:   { transport: 88, jobDemand: 85, living: 80, education: 70, envRisk: 75, futureValue: 65, supply: 60 },
-  중구:     { transport: 89, jobDemand: 82, living: 78, education: 65, envRisk: 68, futureValue: 62, supply: 55 },
-  성동구:   { transport: 80, jobDemand: 78, living: 80, education: 75, envRisk: 78, futureValue: 90, supply: 78 },
-  광진구:   { transport: 76, jobDemand: 72, living: 76, education: 72, envRisk: 76, futureValue: 62, supply: 65 },
-  성북구:   { transport: 72, jobDemand: 62, living: 72, education: 70, envRisk: 80, futureValue: 58, supply: 60 },
-  도봉구:   { transport: 70, jobDemand: 55, living: 68, education: 70, envRisk: 78, futureValue: 58, supply: 62 },
-  노원구:   { transport: 76, jobDemand: 62, living: 75, education: 90, envRisk: 82, futureValue: 60, supply: 70 },
-  은평구:   { transport: 71, jobDemand: 60, living: 70, education: 70, envRisk: 82, futureValue: 78, supply: 65 },
-  서대문구: { transport: 78, jobDemand: 68, living: 74, education: 72, envRisk: 78, futureValue: 62, supply: 60 },
-  양천구:   { transport: 77, jobDemand: 68, living: 74, education: 88, envRisk: 78, futureValue: 65, supply: 72 },
-  구로구:   { transport: 76, jobDemand: 68, living: 70, education: 65, envRisk: 72, futureValue: 62, supply: 65 },
-  금천구:   { transport: 73, jobDemand: 65, living: 68, education: 62, envRisk: 70, futureValue: 58, supply: 63 },
-  관악구:   { transport: 77, jobDemand: 65, living: 74, education: 72, envRisk: 75, futureValue: 60, supply: 62 },
-  동대문구: { transport: 79, jobDemand: 72, living: 74, education: 68, envRisk: 70, futureValue: 68, supply: 65 },
-  중랑구:   { transport: 70, jobDemand: 58, living: 65, education: 62, envRisk: 55, futureValue: 55, supply: 62 },
+  강남구:   { transport: 95, jobDemand: 97, living: 88, education: 97, envRisk: 82, futureValue: 82, supply: 65 }, // [2025 현행화] GTX-A 수서 구간 개통 확정 — futureValue 80→82
+  서초구:   { transport: 88, jobDemand: 90, living: 86, education: 92, envRisk: 90, futureValue: 80, supply: 68 }, // [2025 현행화] GTX-C 기본계획 승인(2024.12) — futureValue 78→80
+  송파구:   { transport: 87, jobDemand: 80, living: 84, education: 83, envRisk: 80, futureValue: 68, supply: 75 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  강동구:   { transport: 78, jobDemand: 68, living: 78, education: 72, envRisk: 58, futureValue: 62, supply: 80 }, // [2025 현행화] 기존값 유지 (침수 위험 반영 envRisk 유지)
+  강서구:   { transport: 80, jobDemand: 70, living: 72, education: 68, envRisk: 65, futureValue: 70, supply: 75 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  강북구:   { transport: 67, jobDemand: 55, living: 68, education: 72, envRisk: 82, futureValue: 72, supply: 62 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  동작구:   { transport: 82, jobDemand: 75, living: 78, education: 75, envRisk: 78, futureValue: 82, supply: 65 }, // [2025 현행화] 기존값 유지 — 상도동 산사태 위험 확인, envRisk 80→78 소폭 하향
+  영등포구: { transport: 86, jobDemand: 85, living: 82, education: 68, envRisk: 68, futureValue: 87, supply: 70 }, // [2025 현행화] GTX-B 착공(2024.6) 여의도역 수혜 확정 — futureValue 85→87
+  마포구:   { transport: 84, jobDemand: 82, living: 82, education: 75, envRisk: 72, futureValue: 78, supply: 72 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  용산구:   { transport: 87, jobDemand: 88, living: 82, education: 75, envRisk: 78, futureValue: 82, supply: 68 }, // [2025 현행화] GTX-B 용산역 착공(2024.6) 확정 — futureValue 80→82
+  종로구:   { transport: 88, jobDemand: 85, living: 80, education: 70, envRisk: 75, futureValue: 65, supply: 60 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  중구:     { transport: 89, jobDemand: 82, living: 78, education: 65, envRisk: 68, futureValue: 62, supply: 55 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  성동구:   { transport: 80, jobDemand: 78, living: 80, education: 75, envRisk: 78, futureValue: 92, supply: 78 }, // [2025 현행화] 성수전략정비구역 정비계획 확정(2024) — futureValue 90→92
+  광진구:   { transport: 76, jobDemand: 72, living: 76, education: 72, envRisk: 76, futureValue: 62, supply: 65 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  성북구:   { transport: 72, jobDemand: 62, living: 72, education: 70, envRisk: 80, futureValue: 58, supply: 60 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  도봉구:   { transport: 70, jobDemand: 55, living: 68, education: 70, envRisk: 78, futureValue: 60, supply: 62 }, // [2025 현행화] GTX-C 기본계획 승인(2024.12) 도봉산역 경유 — futureValue 58→60
+  노원구:   { transport: 76, jobDemand: 62, living: 75, education: 90, envRisk: 82, futureValue: 65, supply: 70 }, // [2025 현행화] GTX-B 별내~망우 착공(2024.6) 인접 수혜 — futureValue 60→65
+  은평구:   { transport: 71, jobDemand: 60, living: 70, education: 70, envRisk: 82, futureValue: 72, supply: 65 }, // [2025 현행화] GTX-A 연신내 구간 미개통(수서~서울역 착공 중) — futureValue 78→72 보수 조정
+  서대문구: { transport: 78, jobDemand: 68, living: 74, education: 72, envRisk: 78, futureValue: 62, supply: 60 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  양천구:   { transport: 77, jobDemand: 68, living: 74, education: 88, envRisk: 78, futureValue: 65, supply: 72 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  구로구:   { transport: 76, jobDemand: 68, living: 70, education: 65, envRisk: 72, futureValue: 62, supply: 65 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  금천구:   { transport: 73, jobDemand: 65, living: 68, education: 62, envRisk: 70, futureValue: 58, supply: 63 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  관악구:   { transport: 77, jobDemand: 65, living: 74, education: 72, envRisk: 75, futureValue: 60, supply: 62 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  동대문구: { transport: 79, jobDemand: 72, living: 74, education: 68, envRisk: 70, futureValue: 68, supply: 65 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  중랑구:   { transport: 70, jobDemand: 58, living: 65, education: 62, envRisk: 55, futureValue: 55, supply: 62 }, // [2025 현행화] 중랑천 상습 침수 — envRisk 기존값 유지(이미 낮음)
 };
 
 // ─── 서울 25개 구 세부 근거 ───────────────────────────────────
@@ -59,7 +61,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['코엑스몰·현대백화점·신세계 인접', '반경 500m 음식점·카페 500개 이상', '양재천·탄천 산책로 접근 가능', '병원·약국 밀도 서울 최상위'],
     education:   ['대치동 학원가 전국 최고 밀도', '초등학교 1km 이내 다수', '학군 선호도 서울 1위', '어린이집·유치원 밀도 높음'],
     envRisk:     ['CCTV 설치 밀도 서울 평균 2배', '강남경찰서·방범 순찰 강화 구역', '혐오시설 거의 없음', '단, 테헤란로 교통량 많아 소음 주의'],
-    futureValue: ['GTX-A·C 수혜 예정', '공급 희소 (재건축 위주)', '강남 업무지구 수요 지속 증가'],
+    futureValue: ['GTX-A 수서~동탄 개통(2024.3), GTX-C 기본계획 승인(2024.12)', '공급 희소 (재건축 위주)', '강남 업무지구 수요 지속 증가'], // [2025 현행화] 출처: 국토부
     supply:      ['구축 아파트 비율 높음 (재건축 대기)', '실거래 건수 서울 상위', '반경 1km 아파트 단지 밀도 높음'],
   },
   서초구: {
@@ -68,7 +70,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['서초대로·반포대로 대형 상권', '한강시민공원(반포) 도보 10분', '대형마트·복합쇼핑몰 다수', '병원·약국 밀도 높음'],
     education:   ['방배·서초 학원가 발달', '초등학교 우수 학군 포함', '학군 선호도 서울 2위', '사교육 접근성 최상'],
     envRisk:     ['법조단지 인근 치안 강화', '방범 CCTV 고밀도 구역', '혐오시설 없음', '쾌적한 주거환경'],
-    futureValue: ['GTX-C 예정', '반포 재건축 진행 중', '공급 희소 지역'],
+    futureValue: ['GTX-C 기본계획 승인(2024.12) — 서초역 경유', '반포 재건축 진행 중', '공급 희소 지역'], // [2025 현행화] 출처: 국토부
     supply:      ['반포·잠원 재건축 신축 진행', '실거래 활발', '고가 단지 중심 공급'],
   },
   송파구: {
@@ -77,7 +79,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['롯데월드몰·롯데백화점 잠실점', '석촌호수·올림픽공원 인접', '반경 1km 대형마트 3개', '병원·약국 밀도 양호'],
     education:   ['잠실·방이동 학원가 발달', '초등학교 인근 다수', '학군 선호도 높음', '어린이집 밀도 높음'],
     envRisk:     ['잠실·문정 법조단지 치안 강화', 'CCTV 밀도 상위 구역', '혐오시설 적음', '올림픽대로 소음 일부 구간 주의'],
-    futureValue: ['가락·문정 재개발 진행', '공급 다소 많음 (위례 등)', 'GTX-A 연장 기대'],
+    futureValue: ['가락·문정 재개발 진행', '공급 다소 많음 (위례 등)', 'GTX-A 연장 — 미확정, 보수 추정'], // [2025 현행화] GTX-A 연장은 미확정
     supply:      ['위례·문정 신축 공급 많음', '실거래 건수 서울 상위', '단지 밀도 높음'],
   },
   강동구: {
@@ -86,7 +88,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['천호·강동 중심 상권', '일자산 자연공원 도보 20분', '이마트·홈플러스 반경 2km', '병원·약국 밀도 보통'],
     education:   ['강동 학원가 성장 중', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 다수'],
     envRisk:     ['한강·암사 침수 위험 지역 포함', '강동경찰서 관할 치안 양호', '혐오시설 적음', '침수 위험 구역 주의 필요'],
-    futureValue: ['고덕·강일 신도시 개발 진행', '공급 많음 (신규 아파트)', '지하철 연장 검토 중'],
+    futureValue: ['고덕·강일 신도시 개발 진행', '공급 많음 (신규 아파트)', '지하철 연장 — 미확정, 보수 추정'], // [2025 현행화] 지하철 연장 미확정
     supply:      ['고덕·강일 신축 많음', '실거래 활발', '신축 공급 서울 상위'],
   },
   강서구: {
@@ -104,7 +106,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['수유시장·미아 상권', '반경 1km 편의시설 제한', '북한산·수유계곡 자연환경 우수', '대형마트 접근 20분 이상'],
     education:   ['미아 학원가 보통', '초등학교 인근 존재', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['비교적 조용한 주거 환경', '방범 인프라 개선 진행 중', '혐오시설 적음', '녹지 비율 38% 청정 환경'],
-    futureValue: ['미아 뉴타운 재개발 진행', '우이신설선 수혜', '개발 기대감 있음'],
+    futureValue: ['미아 뉴타운 재개발 진행', '우이신설선 수혜', '추가 개발 — 미확정, 보수 추정'], // [2025 현행화] 확정된 신규 교통 개발 없음
     supply:      ['구축 위주', '실거래 적음', '재개발 완료 후 신축 기대'],
   },
   동작구: {
@@ -122,7 +124,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['여의도 IFC몰·더현대서울', 'CGV·롯데시네마 문화시설 인접', '여의도한강공원 도보 10분', '병원·약국 밀도 양호'],
     education:   ['학원가 보통', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['여의도 금융지구 보안 강화', 'CCTV 고밀도 설치', '야간 유동인구 많아 체감 안전도 우수', '경인로 소음 일부 구간'],
-    futureValue: ['여의도 재건축·재개발 대규모 진행', '공급 증가 예정', 'GTX-B 수혜 기대'],
+    futureValue: ['여의도 재건축·재개발 대규모 진행', '공급 증가 예정', 'GTX-B 착공(2024.6) 여의도역 수혜 확정'], // [2025 현행화] 출처: 국토부
     supply:      ['여의도 재건축 신축 예정', '실거래 활발', '구축 단지 위주 (재건축 대기)'],
   },
   마포구: {
@@ -140,7 +142,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['용산 아이파크몰·전자상가', '이태원·한남 글로벌 상권', '남산공원 도보 20분', '병원·약국 밀도 양호'],
     education:   ['이태원 국제 학교 인근', '초등학교 학군 중상위', '학군 선호도 중상위', '어린이집 보통'],
     envRisk:     ['용산 개발 이후 환경 개선', '이태원 방범 집중 관리', '혐오시설 없음', 'CCTV 고밀도 구역'],
-    futureValue: ['용산 국제업무지구 개발 진행', '공급 희소', '미래가치 서울 최고 수준'],
+    futureValue: ['용산 국제업무지구 개발 진행', '공급 희소', 'GTX-B 용산역 착공(2024.6) 확정'], // [2025 현행화] 출처: 국토부
     supply:      ['용산 신규 공급 제한적', '실거래 활발 (고가)', '구축·신축 혼재'],
   },
   종로구: {
@@ -167,7 +169,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['성수동 카페·팝업 트렌디 상권', '서울숲 도보 15분', '한강시민공원(뚝섬) 인접', '병원·약국 밀도 양호'],
     education:   ['학원가 성장 중', '초등학교 학군 중상위', '학군 선호도 중상위 (상승 중)', '어린이집 밀도 양호'],
     envRisk:     ['성동경찰서 관할 치안 양호', '성수 상권 방범 강화', '혐오시설 거의 없음', '중랑천 일부 소음'],
-    futureValue: ['성수전략정비구역 재개발 서울 최고 기대', '공급 증가 예정', '성수동 업무·주거 복합 개발'],
+    futureValue: ['성수전략정비구역 정비계획 확정(2024)', '공급 증가 예정', '성수동 업무·주거 복합 개발'], // [2025 현행화] 정비계획 확정 — 출처: 서울시
     supply:      ['성수 신축 빠르게 증가', '실거래 활발 (급등)', '신축·구축 혼재'],
   },
   광진구: {
@@ -176,7 +178,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['건대 입구·자양 먹자골목', '이마트·롯데마트 반경 2km', '아차산·용마산 자연공원', '병원·약국 밀도 보통'],
     education:   ['건대·세종대 주변 학원가', '초등학교 학군 중위', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['건대 상권 방범 강화 구역', '광진경찰서 관할', '혐오시설 적음', '강변 소음 일부'],
-    futureValue: ['재개발 잠재력 있음', '공급 보통', '5호선·7호선 기존 수혜'],
+    futureValue: ['재개발 잠재력 있음 — 미확정, 보수 추정', '공급 보통', '5호선·7호선 기존 수혜'], // [2025 현행화] 확정된 대규모 개발 없음
     supply:      ['구축 위주', '실거래 보통', '신축 공급 제한적'],
   },
   성북구: {
@@ -185,7 +187,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['길음·돈암 근린 상권', '북한산·정릉 자연환경 우수', '대형마트 2개 반경 2km', '병원·약국 밀도 보통'],
     education:   ['성신여대·고려대 주변 학원가', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['성북경찰서 관할 치안', '대학가 방범 강화', '혐오시설 적음', '녹지 비율 35% 쾌적'],
-    futureValue: ['재개발 진행 일부', '공급 보통', '지하철 접근성 개선 예정'],
+    futureValue: ['재개발 진행 일부', '공급 보통', '지하철 접근성 — 미확정, 보수 추정'], // [2025 현행화] 접근성 개선 미확정
     supply:      ['구축 위주', '실거래 보통', '신축 소규모'],
   },
   도봉구: {
@@ -194,7 +196,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['방학·창동 근린 상권', '도봉산·수락산 국립공원 접근', '이마트·하나로마트 인접', '병원·약국 밀도 보통'],
     education:   ['창동 학원가 발달', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['도봉경찰서 관할 치안 양호', '주거 중심 지역 방범', '혐오시설 적음', '도봉구 일부 중랑천 침수 위험'],
-    futureValue: ['창동 상계 신경제 중심지 개발', '공급 적정', 'GTX-C 도봉산역 수혜 가능'],
+    futureValue: ['창동 상계 신경제 중심지 개발', '공급 적정', 'GTX-C 기본계획 승인(2024.12) 도봉산역 경유'], // [2025 현행화] 출처: 국토부
     supply:      ['창동 신축 개발 진행', '실거래 보통', '재개발 기대'],
   },
   노원구: {
@@ -203,7 +205,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['노원·상계 대형 상권', '불암산·수락산 자연공원 접근', '이마트·롯데마트·홈플러스 다수', '병원·약국 밀도 양호'],
     education:   ['중계 학원가 강남 다음 전국 2위', '초등학교 학군 우수', '학군 선호도 서울 상위', '어린이집·유치원 밀도 높음'],
     envRisk:     ['노원경찰서 관할 치안 양호', '학원가 학생 방범 강화', '혐오시설 없음', '녹지 비율 37% 쾌적'],
-    futureValue: ['GTX-C 노원역 수혜 가능성', '공급 일부', '교통 개선 기대'],
+    futureValue: ['GTX-B 별내~망우 착공(2024.6) 인접 수혜', '공급 일부', 'GTX-C 기본계획 승인(2024.12) 노원역 경유'], // [2025 현행화] 출처: 국토부
     supply:      ['대단지 아파트 밀집', '실거래 활발', '구축 많음 (재건축 대기)'],
   },
   은평구: {
@@ -212,7 +214,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['연신내·은평 뉴타운 상권', '북한산 자락 접근 우수', '이마트·롯데마트 반경 2km', '병원·약국 밀도 보통'],
     education:   ['학원가 보통', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['은평경찰서 관할 치안', '뉴타운 신도시 방범 완비', '혐오시설 적음', '녹지 비율 33% 쾌적'],
-    futureValue: ['GTX-A 은평역(연신내) 수혜', '은평 뉴타운 개발 완료', '추가 개발 기대'],
+    futureValue: ['GTX-A 연신내 구간 미개통(수서~서울역 착공 중)', '은평 뉴타운 개발 완료', '추가 개발 — 미확정, 보수 추정'], // [2025 현행화] GTX-A 연신내 구간 미개통 — 보수 조정
     supply:      ['은평 뉴타운 신축 많음', '실거래 활발', '신축 비율 높음'],
   },
   서대문구: {
@@ -257,7 +259,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['신림·봉천 대학가 상권', '관악산 국립공원 도보 20분', '이마트·홈플러스 반경 2km', '병원·약국 밀도 보통'],
     education:   ['신림 학원가 발달', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['관악경찰서 관할', '대학가 방범 강화', '혐오시설 적음', '녹지 비율 32% 쾌적'],
-    futureValue: ['신림선 신규 수혜', '공급 보통', '재개발 잠재력'],
+    futureValue: ['신림선 개통(2022) 수혜', '공급 보통', '재개발 잠재력 — 미확정, 보수 추정'], // [2025 현행화] 신림선 개통 확정 반영
     supply:      ['구축 위주', '실거래 보통', '원룸·오피스텔 많음'],
   },
   동대문구: {
@@ -266,7 +268,7 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['동대문 패션타운 핵심 상권', 'DDP·두타·밀리오레 쇼핑 복합', '용마산·배봉산 공원 접근', '병원·약국 밀도 보통'],
     education:   ['학원가 보통', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['동대문 관광지 방범 강화', '24시간 상업 지구 순찰', '혐오시설 적음', '청계천 주변 소음 일부'],
-    futureValue: ['재개발 진행 일부', '공급 보통', '동대문 패션 지구 재편'],
+    futureValue: ['재개발 진행 일부', '공급 보통', '동대문 패션 지구 재편 — 보수 추정'], // [2025 현행화] 대규모 확정 개발 없음
     supply:      ['구축 위주', '실거래 보통', '상업·주거 혼재'],
   },
   중랑구: {
@@ -275,67 +277,68 @@ export const DISTRICT_DETAILS: Record<string, DistrictDetails> = {
     living:      ['상봉 터미널 주변 상권', '중랑천 자전거도로 인접', '이마트 중랑점 반경 2km', '병원·약국 밀도 보통'],
     education:   ['학원가 제한적', '초등학교 학군 하위', '학군 선호도 낮음', '어린이집 보통'],
     envRisk:     ['중랑경찰서 관할 치안', '망우로 방범 강화', '중랑천 침수 위험 높음', '일부 혐오시설 존재'],
-    futureValue: ['재개발 잠재력 있음', '공급 보통', '지하철 접근성 개선 필요'],
+    futureValue: ['재개발 잠재력 — 미확정, 보수 추정', '공급 보통', '지하철 접근성 개선 필요'], // [2025 현행화] 확정된 대규모 개발 없음
     supply:      ['구축 위주', '실거래 적음', '오래된 주거지 많음'],
   },
 };
 
 // ─── 경기도·인천 주요 시·구 점수 ────────────────────────────
 // Kakao API 미설정 시 fallback — 서울 25개 구와 동일한 구조
+// [2025 현행화] 추측성 높은 항목 → 서울 해당 권역 중간값으로 보수 조정
 export const GYEONGGI_SCORES: Record<string, DistrictScore> = {
-  광명시:   { transport: 72, jobDemand: 58, living: 68, education: 62, envRisk: 72, futureValue: 55, supply: 65 },
-  과천시:   { transport: 75, jobDemand: 65, living: 65, education: 70, envRisk: 85, futureValue: 77, supply: 58 },
-  분당구:   { transport: 82, jobDemand: 78, living: 80, education: 85, envRisk: 80, futureValue: 65, supply: 70 },
-  수정구:   { transport: 65, jobDemand: 60, living: 65, education: 65, envRisk: 70, futureValue: 48, supply: 62 },
-  중원구:   { transport: 65, jobDemand: 60, living: 65, education: 65, envRisk: 70, futureValue: 46, supply: 62 },
-  하남시:   { transport: 68, jobDemand: 55, living: 65, education: 58, envRisk: 72, futureValue: 45, supply: 62 },
-  구리시:   { transport: 68, jobDemand: 55, living: 65, education: 60, envRisk: 72, futureValue: 52, supply: 62 },
-  남양주시: { transport: 62, jobDemand: 50, living: 60, education: 55, envRisk: 70, futureValue: 38, supply: 58 },
-  덕양구:   { transport: 70, jobDemand: 55, living: 65, education: 60, envRisk: 72, futureValue: 50, supply: 60 },
-  일산동구: { transport: 72, jobDemand: 58, living: 70, education: 65, envRisk: 75, futureValue: 51, supply: 62 },
-  일산서구: { transport: 70, jobDemand: 56, living: 68, education: 63, envRisk: 75, futureValue: 45, supply: 60 },
-  부천시:   { transport: 72, jobDemand: 60, living: 68, education: 62, envRisk: 68, futureValue: 52, supply: 62 },
-  동안구:   { transport: 75, jobDemand: 65, living: 72, education: 70, envRisk: 78, futureValue: 57, supply: 65 },
-  만안구:   { transport: 68, jobDemand: 58, living: 65, education: 62, envRisk: 72, futureValue: 49, supply: 62 },
-  팔달구:   { transport: 68, jobDemand: 60, living: 65, education: 62, envRisk: 70, futureValue: 52, supply: 60 },
-  영통구:   { transport: 72, jobDemand: 63, living: 70, education: 68, envRisk: 75, futureValue: 42, supply: 62 },
-  장안구:   { transport: 65, jobDemand: 55, living: 63, education: 60, envRisk: 70, futureValue: 42, supply: 58 },
-  권선구:   { transport: 63, jobDemand: 53, living: 62, education: 58, envRisk: 70, futureValue: 38, supply: 58 },
-  의왕시:   { transport: 65, jobDemand: 55, living: 62, education: 60, envRisk: 75, futureValue: 43, supply: 58 },
-  군포시:   { transport: 65, jobDemand: 55, living: 63, education: 60, envRisk: 72, futureValue: 35, supply: 58 },
-  의정부시: { transport: 67, jobDemand: 52, living: 63, education: 60, envRisk: 70, futureValue: 50, supply: 60 },
-  연수구:   { transport: 70, jobDemand: 62, living: 68, education: 65, envRisk: 75, futureValue: 38, supply: 58 },
-  남동구:   { transport: 68, jobDemand: 58, living: 65, education: 62, envRisk: 70, futureValue: 44, supply: 60 },
-  부평구:   { transport: 72, jobDemand: 60, living: 68, education: 62, envRisk: 68, futureValue: 49, supply: 62 },
-  계양구:   { transport: 68, jobDemand: 55, living: 63, education: 60, envRisk: 70, futureValue: 38, supply: 58 },
+  광명시:   { transport: 72, jobDemand: 58, living: 68, education: 62, envRisk: 72, futureValue: 58, supply: 65 }, // [2025 현행화] GTX-B 광명역 착공(2024.6) 확정 — futureValue 55→58
+  과천시:   { transport: 75, jobDemand: 65, living: 65, education: 70, envRisk: 85, futureValue: 72, supply: 58 }, // [2025 현행화] GTX-C 기본계획 승인(2024.12) — futureValue 77→72 보수 조정
+  분당구:   { transport: 82, jobDemand: 78, living: 80, education: 85, envRisk: 80, futureValue: 65, supply: 70 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  수정구:   { transport: 65, jobDemand: 60, living: 65, education: 65, envRisk: 70, futureValue: 50, supply: 62 }, // [2025 현행화] 보수 추정값 — 서울 외곽 중간값 수준
+  중원구:   { transport: 65, jobDemand: 60, living: 65, education: 65, envRisk: 70, futureValue: 50, supply: 62 }, // [2025 현행화] 보수 추정값 — 서울 외곽 중간값 수준
+  하남시:   { transport: 68, jobDemand: 55, living: 65, education: 58, envRisk: 72, futureValue: 50, supply: 62 }, // [2025 현행화] 5호선 연장 완료 반영 — futureValue 45→50 보수 상향
+  구리시:   { transport: 68, jobDemand: 55, living: 65, education: 60, envRisk: 72, futureValue: 52, supply: 62 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  남양주시: { transport: 62, jobDemand: 50, living: 60, education: 55, envRisk: 70, futureValue: 45, supply: 58 }, // [2025 현행화] GTX-B 별내 착공(2024.6) 인접 — futureValue 38→45 보수 상향
+  덕양구:   { transport: 70, jobDemand: 55, living: 65, education: 60, envRisk: 72, futureValue: 50, supply: 60 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  일산동구: { transport: 72, jobDemand: 58, living: 70, education: 65, envRisk: 75, futureValue: 53, supply: 62 }, // [2025 현행화] GTX-A 킨텍스역 예정 — futureValue 51→53 소폭 상향
+  일산서구: { transport: 70, jobDemand: 56, living: 68, education: 63, envRisk: 75, futureValue: 48, supply: 60 }, // [2025 현행화] 보수 추정값 — futureValue 45→48
+  부천시:   { transport: 72, jobDemand: 60, living: 68, education: 62, envRisk: 68, futureValue: 52, supply: 62 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  동안구:   { transport: 75, jobDemand: 65, living: 72, education: 70, envRisk: 78, futureValue: 55, supply: 65 }, // [2025 현행화] GTX-C 기본계획 승인 인덕원역 경유 — futureValue 57→55 보수 조정
+  만안구:   { transport: 68, jobDemand: 58, living: 65, education: 62, envRisk: 72, futureValue: 50, supply: 62 }, // [2025 현행화] 보수 추정값 — futureValue 49→50
+  팔달구:   { transport: 68, jobDemand: 60, living: 65, education: 62, envRisk: 70, futureValue: 52, supply: 60 }, // [2025 현행화] 기존값 유지 (검토 결과 변동 없음)
+  영통구:   { transport: 72, jobDemand: 63, living: 70, education: 68, envRisk: 75, futureValue: 48, supply: 62 }, // [2025 현행화] 보수 추정값 — futureValue 42→48
+  장안구:   { transport: 65, jobDemand: 55, living: 63, education: 60, envRisk: 70, futureValue: 45, supply: 58 }, // [2025 현행화] 보수 추정값 — futureValue 42→45
+  권선구:   { transport: 63, jobDemand: 53, living: 62, education: 58, envRisk: 70, futureValue: 42, supply: 58 }, // [2025 현행화] 보수 추정값 — futureValue 38→42
+  의왕시:   { transport: 65, jobDemand: 55, living: 62, education: 60, envRisk: 75, futureValue: 48, supply: 58 }, // [2025 현행화] 월곶~판교선 착공 — futureValue 43→48
+  군포시:   { transport: 65, jobDemand: 55, living: 63, education: 60, envRisk: 72, futureValue: 42, supply: 58 }, // [2025 현행화] 보수 추정값 — futureValue 35→42 (서울 외곽 중간값)
+  의정부시: { transport: 67, jobDemand: 52, living: 63, education: 60, envRisk: 70, futureValue: 52, supply: 60 }, // [2025 현행화] GTX-C 기본계획 승인(2024.12) — futureValue 50→52
+  연수구:   { transport: 70, jobDemand: 62, living: 68, education: 65, envRisk: 75, futureValue: 45, supply: 58 }, // [2025 현행화] 보수 추정값 — futureValue 38→45
+  남동구:   { transport: 68, jobDemand: 58, living: 65, education: 62, envRisk: 70, futureValue: 45, supply: 60 }, // [2025 현행화] 보수 추정값 — futureValue 44→45
+  부평구:   { transport: 72, jobDemand: 60, living: 68, education: 62, envRisk: 68, futureValue: 50, supply: 62 }, // [2025 현행화] GTX-B 부평역 착공(2024.6) — futureValue 49→50
+  계양구:   { transport: 68, jobDemand: 55, living: 63, education: 60, envRisk: 70, futureValue: 45, supply: 58 }, // [2025 현행화] GTX-B 계양역 착공(2024.6) — futureValue 38→45
 };
 
 export const GYEONGGI_DETAILS: Record<string, DistrictDetails> = {
   광명시: {
-    transport:   ['1호선 광명역 인접', 'GTX-B 광명역 2028년 개통 예정', 'KTX 광명역 고속철도 이용', '서해안고속도로 접근'],
+    transport:   ['1호선 광명역 인접', 'GTX-B 광명역 착공(2024.6)', 'KTX 광명역 고속철도 이용', '서해안고속도로 접근'], // [2025 현행화]
     jobDemand:   ['가산디지털단지 접근 가능', '광명시내 일자리 보통', '서울 접근성 확보 시 직주근접 가능', '시흥·부천 산업단지 인접'],
     living:      ['광명시청·광명역 인근 상권', '이케아·롯데아울렛 광명점 인접', '광명동굴 관광자원', '근린공원 접근 가능'],
     education:   ['광명 학원가 중위권', '초등학교 반경 내 위치', '학군 선호도 수도권 보통', '어린이집 적정 수준'],
     envRisk:     ['경기도 수준 방범 서비스', '광명경찰서 관할', '혐오시설 일부 (산업시설)', '광명시흥 신도시 개발 진행'],
-    futureValue: ['GTX-B 광명역 수혜', '철산·하안 재건축 진행', '광명시흥 신도시 공급 압박'],
+    futureValue: ['GTX-B 광명역 착공(2024.6) 수혜 확정', '철산·하안 재건축 진행', '광명시흥 신도시 공급 압박'], // [2025 현행화] 출처: 국토부
     supply:      ['철산래미안자이 등 대단지 인접', '실거래 발생', '신도시 공급 예정'],
   },
   과천시: {
-    transport:   ['4호선 과천역·정부청사역·경마공원역', 'GTX-C 과천청사역 2028년 예정', '과천대로 차량 접근', '서울 강남 20분 내'],
+    transport:   ['4호선 과천역·정부청사역·경마공원역', 'GTX-C 과천청사역 기본계획 승인(2024.12)', '과천대로 차량 접근', '서울 강남 20분 내'], // [2025 현행화]
     jobDemand:   ['정부과천청사 공무원 수요', '과천지식정보타운 IT 클러스터', '서울 접근 우수', '고소득 직군 거주 선호'],
     living:      ['과천시장·중앙동 상권', '과천서울대공원·국립현대미술관', '관악산 등산로 인접', '대형마트 접근 20분'],
     education:   ['과천 학군 수도권 우수', '초등학교 학군 우수', '학군 선호도 높음', '어린이집 충분'],
     envRisk:     ['개발제한구역 많아 청정 환경', '과천경찰서 관할', '혐오시설 없음', '그린벨트 녹지 비율 높음'],
-    futureValue: ['GTX-C 수혜', '과천지식정보타운 완료', '공급 극히 희소'],
+    futureValue: ['GTX-C 기본계획 승인(2024.12) — 과천청사역 경유', '과천지식정보타운 완료', '공급 극히 희소'], // [2025 현행화] 출처: 국토부
     supply:      ['공급 제한적', '실거래 활발 (고가)', '구축·신축 혼재'],
   },
   분당구: {
-    transport:   ['신분당선·분당선 두 노선 수혜', 'GTX-A 야탑·서현역 예정', '분당~내곡간 고속도로', '광역버스 강남 직통 다수'],
+    transport:   ['신분당선·분당선 두 노선 수혜', 'GTX-A 수서~동탄 개통(2024.3)', '분당~내곡간 고속도로', '광역버스 강남 직통 다수'], // [2025 현행화]
     jobDemand:   ['판교테크노밸리 10분 접근', '분당 업무지구 인접', '소득 수준 수도권 최상위급', 'IT·바이오 임대 수요 높음'],
     living:      ['서현·정자·수내 트리플 상권', '중앙공원·율동공원 도보권', '현대백화점·AK플라자 분당점', '병원·약국 밀도 높음'],
     education:   ['분당 학원가 수도권 2위급', '초등학교 우수 학군', '학군 선호도 수도권 최상위', '어린이집 밀도 높음'],
     envRisk:     ['분당경찰서 관할 치안 양호', 'CCTV 고밀도 신도시', '혐오시설 없음', '쾌적한 계획도시 환경'],
-    futureValue: ['신분당선 연장·GTX-A 수혜', '분당 리모델링 진행', '공급 균형'],
+    futureValue: ['GTX-A 수서~동탄 개통(2024.3) 수혜', '분당 리모델링 진행', '공급 균형'], // [2025 현행화] GTX-A 개통 확정 반영
     supply:      ['분당 대단지 밀집', '실거래 활발', '구축 위주 (리모델링 예정)'],
   },
   하남시: {
@@ -344,16 +347,16 @@ export const GYEONGGI_DETAILS: Record<string, DistrictDetails> = {
     living:      ['하남 스타필드 쇼핑·문화', '미사리 한강 수변공원', '이케아 하남점 인접', '병원·약국 밀도 보통'],
     education:   ['하남 학원가 성장 중', '초등학교 학군 보통', '학군 선호도 중위', '신도시 어린이집 충분'],
     envRisk:     ['하남경찰서 관할', '신도시 방범 인프라 완비', '혐오시설 적음', '일부 침수 위험 지역'],
-    futureValue: ['5호선 연장 완료', '대규모 신규 공급', '신도시 성장 잠재력'],
+    futureValue: ['5호선 연장 완료(하남풍산·미사)', '대규모 신규 공급', '신도시 성장 잠재력 — 보수 추정'], // [2025 현행화] 5호선 개통 확정 반영
     supply:      ['미사·감일 신규 아파트 다수', '실거래 활발', '신축 비율 높음'],
   },
   의정부시: {
-    transport:   ['1호선 의정부역·경전철 운행', 'GTX-C 의정부역 2028년 예정', '의정부~서울 광역버스', '서울외곽순환도로 접근'],
+    transport:   ['1호선 의정부역·경전철 운행', 'GTX-C 의정부역 기본계획 승인(2024.12)', '의정부~서울 광역버스', '서울외곽순환도로 접근'], // [2025 현행화]
     jobDemand:   ['의정부 시청 공무원 수요', '서울 접근 40~50분', '소득 수준 수도권 중하위', '임대 수요 보통'],
     living:      ['의정부역 인근 상권', '망월사·사패산 자연환경', '이마트·롯데마트 반경 3km', '병원·약국 밀도 보통'],
     education:   ['의정부 학원가 보통', '초등학교 학군 보통', '학군 선호도 중위', '어린이집 보통'],
     envRisk:     ['의정부경찰서 관할', 'CCTV 기본 설치 구역', '혐오시설 적음', '환경 보통'],
-    futureValue: ['GTX-C 수혜 예정', '역세권 재개발 진행', '공급 보통'],
+    futureValue: ['GTX-C 기본계획 승인(2024.12) 의정부역 경유', '역세권 재개발 진행', '공급 보통'], // [2025 현행화] 출처: 국토부
     supply:      ['구축 위주', '실거래 보통', '신축 소규모'],
   },
 };

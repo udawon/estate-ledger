@@ -1,8 +1,9 @@
 // ─── 종합 점수 집계 엔진 (v4 7카테고리) ─────────────────────
 // 7카테고리 가중 평균 계산 + 등급·요약 문구 생성
 
-import type { CategoryScore, Grade, AnalysisResult } from '@/types';
-import { GRADE_CONFIG } from '@/types';
+import type { CategoryScore, Grade, AnalysisResult, RelativeScore } from '@/types';
+import { GRADE_CONFIG, CATEGORY_WEIGHTS } from '@/types';
+import { DISTRICT_SCORES } from './district-data';
 
 /** 7카테고리 점수 집합 타입 */
 export interface CategoryScores {
@@ -25,7 +26,7 @@ export interface AggregateResult {
  * 점수에 따른 등급 산출
  * GRADE_CONFIG의 min 기준 내림차순 비교
  */
-function getGrade(score: number): Grade {
+export function getGrade(score: number): Grade {
   const grades: Grade[] = ['A', 'B', 'C', 'D', 'F'];
   for (const grade of grades) {
     if (score >= GRADE_CONFIG[grade].min) {
@@ -115,6 +116,39 @@ export function generateSummary(
   }
 
   return `${base}${penaltyWarn}`;
+}
+
+/**
+ * 서울 25개 구 평균 totalScore 분포에서 percentile 계산
+ * district-data의 가중 평균 점수를 기준으로 상대 위치 산출
+ *
+ * @param finalScore - 분석 대상의 최종 점수
+ * @returns RelativeScore (percentile, label, basis)
+ */
+export function calculateRelativeScore(finalScore: number): RelativeScore {
+  // 25개 구의 가중 평균 점수 산출
+  const districtTotalScores = Object.values(DISTRICT_SCORES).map(d =>
+    Math.round(
+      d.transport   * CATEGORY_WEIGHTS.transport   +
+      d.jobDemand   * CATEGORY_WEIGHTS.jobDemand   +
+      d.living      * CATEGORY_WEIGHTS.living      +
+      d.education   * CATEGORY_WEIGHTS.education   +
+      d.envRisk     * CATEGORY_WEIGHTS.envRisk     +
+      d.futureValue * CATEGORY_WEIGHTS.futureValue +
+      d.supply      * CATEGORY_WEIGHTS.supply,
+    ),
+  );
+
+  const below = districtTotalScores.filter(s => s <= finalScore).length;
+  const percentile = Math.round((below / districtTotalScores.length) * 100);
+
+  const label = percentile >= 90 ? '서울 최상위권'
+    : percentile >= 75 ? '서울 상위권'
+    : percentile >= 50 ? '서울 평균 이상'
+    : percentile >= 25 ? '서울 평균 이하'
+    : '서울 하위권';
+
+  return { percentile, label, basis: '서울 25개 구 평균 기준' };
 }
 
 /**
