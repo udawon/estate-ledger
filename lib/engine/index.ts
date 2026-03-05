@@ -10,7 +10,7 @@ import { calcEnvRiskScore }     from './env-risk';
 import { calcFutureValueScore } from './future-value';
 import { calcSupplyScore }      from './supply';
 import { calcPenalty }          from './penalty';
-import { aggregateScore, generateSummary, getGrade } from './scoring';
+import { aggregateScore, generateSummary, getGrade, calculateRelativeScore } from './scoring';
 import type { Grade } from '@/types';
 import { GRADE_CONFIG } from '@/types';
 
@@ -159,6 +159,9 @@ export async function analyze(req: AnalysisRequest): Promise<AnalysisResult> {
     categories,
   );
 
+  // 6-1. 상대 점수 계산 (서울 25개 구 분포 기준 percentile)
+  const relativeScore = calculateRelativeScore(finalScore);
+
   return {
     id: generateId(),
     address: resolvedAddress, // 모호한 입력(예: "시청로 50") → Kakao 해석 전체 주소 표시
@@ -172,6 +175,7 @@ export async function analyze(req: AnalysisRequest): Promise<AnalysisResult> {
     grade,
     categories,
     summary,
+    relativeScore,
     analyzedAt: new Date().toISOString(),
     tradeSummary: tradeResult ?? undefined,
   };
