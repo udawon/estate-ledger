@@ -46,8 +46,8 @@ export default function LandingPage() {
       const res = await fetch('/api/auth/demo-login', { method: 'POST' });
       const json = await res.json() as { success: boolean };
       if (json.success) {
-        router.push('/listings/sales');
-        return; // 성공 시 로딩 유지 — 페이지 전환되면 컴포넌트 언마운트됨
+        window.location.href = '/listings/sales'; // 크로스 레이아웃 전환 — 풀 로드로 즉시 반응
+        return;
       }
     } catch {
       // 실패해도 로그인 페이지로 안내
@@ -83,9 +83,11 @@ export default function LandingPage() {
 
   return (
     <>
+      {/* DM Mono 폰트 — @import를 link로 분리해야 @keyframes 파싱이 차단되지 않음 */}
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" />
+
       {/* ── 글로벌 스타일 + 애니메이션 키프레임 ─────────────────── */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
 
         .land-root {
           background: #070e20;

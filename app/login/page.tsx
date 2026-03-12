@@ -4,7 +4,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -20,7 +19,7 @@ const loginSchema = z.object({
 type LoginForm = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
-  const router = useRouter();
+
   const [showPw, setShowPw] = useState(false);
   const [serverError, setServerError] = useState('');
   const [demoLoading, setDemoLoading] = useState(false);
@@ -42,7 +41,8 @@ export default function LoginPage() {
       });
       const json = (await res.json()) as { success: boolean; error?: string };
       if (json.success) {
-        router.push('/listings/sales');
+        window.location.href = '/listings/sales'; // 크로스 레이아웃 전환 — 풀 로드로 즉시 반응
+        return;
       } else {
         setServerError(json.error ?? '로그인에 실패했습니다.');
       }
@@ -59,8 +59,8 @@ export default function LoginPage() {
       const res = await fetch('/api/auth/demo-login', { method: 'POST' });
       const json = (await res.json()) as { success: boolean };
       if (json.success) {
-        router.push('/listings/sales');
-        return; // 성공 시 로딩 유지 — 페이지 전환되면 컴포넌트 언마운트됨
+        window.location.href = '/listings/sales'; // 크로스 레이아웃 전환 — 풀 로드로 즉시 반응
+        return;
       }
     } catch {
       setServerError('데모 로그인에 실패했습니다.');

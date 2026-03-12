@@ -7,7 +7,7 @@ const csp = [
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: blob: https://*.tile.openstreetmap.org",
   "frame-src https://www.openstreetmap.org",
-  "connect-src 'self' https://dapi.kakao.com https://apis.data.go.kr https://kosis.kr http://openapi.seoul.go.kr:8088 http://apis.data.go.kr https://nominatim.openstreetmap.org",
+  "connect-src 'self' ws: wss: https://dapi.kakao.com https://apis.data.go.kr https://kosis.kr http://openapi.seoul.go.kr:8088 http://apis.data.go.kr https://nominatim.openstreetmap.org",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -31,7 +31,7 @@ const securityHeaders = [
   { key: "X-XSS-Protection", value: "1; mode=block" },
   // DNS 프리페치 제어
   { key: "X-DNS-Prefetch-Control", value: "on" },
-  // CSP — XSS·데이터 주입 방지
+  // CSP — XSS·데이터 주입 방지 (ws: wss:는 HMR + 실시간 기능용)
   { key: "Content-Security-Policy", value: csp },
 ];
 

@@ -1,12 +1,13 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-12T10:31:24.826Z",
+  "lastUpdated": "2026-03-12T11:01:16.922Z",
   "activeFeatures": [
     "(landing)",
     "login",
     "analysis",
     "claude-estate",
-    "(ledger)"
+    "(ledger)",
+    ".tmp"
   ],
   "primaryFeature": "(landing)",
   "features": {
@@ -19,7 +20,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-12T10:15:15.725Z",
-        "lastUpdated": "2026-03-12T10:20:23.601Z"
+        "lastUpdated": "2026-03-12T11:00:10.139Z"
       },
       "lastFile": "C:\\Users\\udawon\\project\\claude-estate\\app\\(landing)\\page.tsx"
     },
@@ -32,7 +33,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-12T10:20:20.211Z",
-        "lastUpdated": "2026-03-12T10:20:20.211Z"
+        "lastUpdated": "2026-03-12T10:42:04.333Z"
       },
       "lastFile": "C:\\Users\\udawon\\project\\claude-estate\\app\\login\\page.tsx"
     },
@@ -58,7 +59,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-12T10:21:57.148Z",
-        "lastUpdated": "2026-03-12T10:21:57.148Z"
+        "lastUpdated": "2026-03-12T10:46:01.387Z"
       },
       "lastFile": "C:\\Users\\udawon\\project\\claude-estate\\next.config.ts"
     },
@@ -74,6 +75,19 @@
         "lastUpdated": "2026-03-12T10:31:24.826Z"
       },
       "lastFile": "C:\\Users\\udawon\\project\\claude-estate\\app\\(ledger)\\loading.tsx"
+    },
+    ".tmp": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-12T10:47:19.742Z",
+        "lastUpdated": "2026-03-12T11:01:16.922Z"
+      },
+      "lastFile": "C:\\Users\\udawon\\project\\claude-estate\\.tmp\\test_prod.py"
     }
   },
   "pipeline": {
@@ -84,7 +98,7 @@
   "session": {
     "startedAt": "2026-03-12T10:09:33.373Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-12T10:31:24.826Z"
+    "lastActivity": "2026-03-12T11:01:16.922Z"
   },
   "history": [
     {
@@ -120,6 +134,102 @@
     {
       "timestamp": "2026-03-12T10:31:24.826Z",
       "feature": "(ledger)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:41:44.864Z",
+      "feature": "(landing)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:41:46.142Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:41:47.353Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:41:58.366Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:42:04.333Z",
+      "feature": "login",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:45:45.965Z",
+      "feature": "claude-estate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:45:59.863Z",
+      "feature": "claude-estate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:46:01.387Z",
+      "feature": "claude-estate",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:47:19.742Z",
+      "feature": ".tmp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:50:49.568Z",
+      "feature": ".tmp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:51:56.988Z",
+      "feature": ".tmp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:54:57.463Z",
+      "feature": ".tmp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:56:24.336Z",
+      "feature": ".tmp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T10:58:08.220Z",
+      "feature": ".tmp",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T11:00:10.139Z",
+      "feature": "(landing)",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-12T11:01:16.922Z",
+      "feature": ".tmp",
       "phase": "do",
       "action": "updated"
     }
