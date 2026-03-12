@@ -60,12 +60,12 @@ export default function LoginPage() {
       const json = (await res.json()) as { success: boolean };
       if (json.success) {
         router.push('/listings/sales');
+        return; // 성공 시 로딩 유지 — 페이지 전환되면 컴포넌트 언마운트됨
       }
     } catch {
       setServerError('데모 로그인에 실패했습니다.');
-    } finally {
-      setDemoLoading(false);
     }
+    setDemoLoading(false); // 실패 시에만 로딩 해제
   }
 
   return (

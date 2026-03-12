@@ -47,12 +47,12 @@ export default function LandingPage() {
       const json = await res.json() as { success: boolean };
       if (json.success) {
         router.push('/listings/sales');
+        return; // 성공 시 로딩 유지 — 페이지 전환되면 컴포넌트 언마운트됨
       }
     } catch {
       // 실패해도 로그인 페이지로 안내
-    } finally {
-      setDemoLoading(false);
     }
+    setDemoLoading(false); // 실패 시에만 로딩 해제
   }
 
   // 입지분석 실행: API → sessionStorage → 결과 페이지 이동
@@ -71,14 +71,14 @@ export default function LandingPage() {
       if (json.success && json.data) {
         sessionStorage.setItem('analysisResult', JSON.stringify(json.data));
         router.push('/analysis/results');
+        return; // 성공 시 로딩 유지 — 페이지 전환되면 컴포넌트 언마운트됨
       } else {
         setError(json.error ?? '분석에 실패했습니다. 주소를 확인해주세요.');
       }
     } catch {
       setError('서버 오류가 발생했습니다.');
-    } finally {
-      setLoading(false);
     }
+    setLoading(false); // 실패 시에만 로딩 해제
   }
 
   return (

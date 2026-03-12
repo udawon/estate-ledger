@@ -48,14 +48,14 @@ function AnalysisContent() {
         // 결과를 sessionStorage에 저장 후 결과 페이지로 이동
         sessionStorage.setItem('analysisResult', JSON.stringify(json.data));
         router.push('/analysis/results');
+        return; // 성공 시 로딩 유지 — 페이지 전환되면 컴포넌트 언마운트됨
       } else {
         setError(json.error ?? '분석에 실패했습니다. 주소를 확인해주세요.');
       }
     } catch {
       setError('서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
-    } finally {
-      setIsLoading(false);
     }
+    setIsLoading(false); // 실패 시에만 로딩 해제
   }, [router]);
 
   // URL 파라미터가 있으면 자동 분석 실행
