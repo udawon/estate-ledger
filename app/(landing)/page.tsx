@@ -398,7 +398,7 @@ export default function LandingPage() {
             </h1>
             <p className="a3 text-sm md:text-base max-w-lg mx-auto leading-relaxed"
               style={{ color: '#94a3b8' }}>
-              매매·상가·전월세 매물장을 통합 관리하고,<br className="hidden sm:block" />
+              매매·상가·전월세 매물장을 통합 관리하고<br />
               공공 API 7종 실측 데이터로 입지를 정밀 분석합니다.
             </p>
           </div>

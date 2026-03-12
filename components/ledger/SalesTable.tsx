@@ -425,7 +425,7 @@ export function SalesTable({ initialData }: Props) {
   const AutoField = ({ label, value }: { label: string; value: string }) => (
     <div>
       <Label className="text-xs text-slate-500 block mb-1.5">{label}</Label>
-      <Input value={value} readOnly className="bg-slate-50 text-slate-400 cursor-not-allowed text-sm" />
+      <Input value={value} readOnly className="bg-slate-50 text-slate-400 cursor-not-allowed text-base sm:text-sm" />
     </div>
   );
 
@@ -488,7 +488,7 @@ export function SalesTable({ initialData }: Props) {
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">접수일 <span className="text-red-400">*</span></Label>
-                <Input type="date" {...register('recv_date')} className="text-sm" />
+                <Input type="date" {...register('recv_date')} className="text-base sm:text-sm" />
                 {errors.recv_date && <p className="text-xs text-red-500 mt-0.5">{errors.recv_date.message}</p>}
               </div>
               <div>
@@ -498,7 +498,7 @@ export function SalesTable({ initialData }: Props) {
                   control={control}
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
+                      <SelectTrigger className="text-base sm:text-sm"><SelectValue /></SelectTrigger>
                       <SelectContent>
                         {CATEGORY_OPTIONS.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}
                       </SelectContent>
@@ -508,16 +508,16 @@ export function SalesTable({ initialData }: Props) {
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">도로명 주소 <span className="text-red-400">*</span></Label>
-                <Input {...register('road_addr')} placeholder="서울시 강남구..." className="text-sm" />
+                <Input {...register('road_addr')} placeholder="서울시 강남구..." className="text-base sm:text-sm" />
                 {errors.road_addr && <p className="text-xs text-red-500 mt-0.5">{errors.road_addr.message}</p>}
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">주소지</Label>
-                <Input {...register('lot_addr')} className="text-sm" />
+                <Input {...register('lot_addr')} className="text-base sm:text-sm" />
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">방문경로</Label>
-                <Input {...register('source')} className="text-sm" />
+                <Input {...register('source')} className="text-base sm:text-sm" />
               </div>
             </div>
 
@@ -525,34 +525,34 @@ export function SalesTable({ initialData }: Props) {
             <div className="space-y-3">
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">용도지역</Label>
-                <Input {...register('zoning')} placeholder="2종일반, 준주거..." className="text-sm" />
+                <Input {...register('zoning')} placeholder="2종일반, 준주거..." className="text-base sm:text-sm" />
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">해당층</Label>
-                <Input {...register('floor_this')} placeholder="예: 3층" className="text-sm" />
+                <Input {...register('floor_this')} placeholder="예: 3층" className="text-base sm:text-sm" />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">층(지하)</Label>
-                  <Input type="number" {...register('floor_b')} className="text-sm" />
+                  <Input type="number" {...register('floor_b')} className="text-base sm:text-sm" />
                 </div>
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">층(지상)</Label>
-                  <Input type="number" {...register('floor_g')} className="text-sm" />
+                  <Input type="number" {...register('floor_g')} className="text-base sm:text-sm" />
                 </div>
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">건축년월일</Label>
-                <Input type="date" {...register('built_date')} className="text-sm" />
+                <Input type="date" {...register('built_date')} className="text-base sm:text-sm" />
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">주차(자주)</Label>
-                  <Input type="number" {...register('park_self')} className="text-sm" />
+                  <Input type="number" {...register('park_self')} className="text-base sm:text-sm" />
                 </div>
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">주차(기계)</Label>
-                  <Input type="number" {...register('park_mech')} className="text-sm" />
+                  <Input type="number" {...register('park_mech')} className="text-base sm:text-sm" />
                 </div>
               </div>
               <div>
@@ -562,7 +562,7 @@ export function SalesTable({ initialData }: Props) {
                   control={control}
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="text-sm"><SelectValue /></SelectTrigger>
+                      <SelectTrigger className="text-base sm:text-sm"><SelectValue /></SelectTrigger>
                       <SelectContent>
                         {ELEVATOR_OPTIONS.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}
                       </SelectContent>
@@ -576,12 +576,12 @@ export function SalesTable({ initialData }: Props) {
             <div className="space-y-3">
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">토지(㎡)</Label>
-                <Input type="number" step="0.01" {...register('land_m2')} className="text-sm" />
+                <Input type="number" step="0.01" {...register('land_m2')} className="text-base sm:text-sm" />
               </div>
               <AutoField label="토지(평) (자동)" value={auto.land_py > 0 ? auto.land_py.toFixed(4) : '0.00'} />
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">건물(㎡)</Label>
-                <Input type="number" step="0.01" {...register('bldg_area')} className="text-sm" />
+                <Input type="number" step="0.01" {...register('bldg_area')} className="text-base sm:text-sm" />
               </div>
               <AutoField label="건물(평) (자동)" value={auto.bldg_py > 0 ? auto.bldg_py.toFixed(4) : '0.00'} />
             </div>
@@ -590,24 +590,24 @@ export function SalesTable({ initialData }: Props) {
             <div className="space-y-3">
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">매가 (만원)</Label>
-                <Input type="number" {...register('price')} className="text-sm" />
+                <Input type="number" {...register('price')} className="text-base sm:text-sm" />
               </div>
               <AutoField label="평당매매가 (자동: 매가/토지평)" value={auto.price_per_py > 0 ? fmt(auto.price_per_py) : '0'} />
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">순투자금 (만원)</Label>
-                <Input type="number" {...register('net_invest')} className="text-sm" />
+                <Input type="number" {...register('net_invest')} className="text-base sm:text-sm" />
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">보증금 (만원)</Label>
-                <Input type="number" {...register('deposit')} className="text-sm" />
+                <Input type="number" {...register('deposit')} className="text-base sm:text-sm" />
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">월세 (만원)</Label>
-                <Input type="number" {...register('monthly')} className="text-sm" />
+                <Input type="number" {...register('monthly')} className="text-base sm:text-sm" />
               </div>
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">관리비 (만원)</Label>
-                <Input type="number" {...register('mng_fee')} className="text-sm" />
+                <Input type="number" {...register('mng_fee')} className="text-base sm:text-sm" />
               </div>
               <AutoField label="소계 (자동: 월세+관리비)" value={auto.subtotal > 0 ? fmt(auto.subtotal) : '0'} />
               <AutoField label="현 수익율 (자동, %)" value={auto.yield_cur > 0 ? auto.yield_cur.toFixed(2) + '%' : '0.00%'} />
@@ -638,7 +638,7 @@ export function SalesTable({ initialData }: Props) {
                         value={field.value || '_none'}
                         onValueChange={(v) => field.onChange(v === '_none' ? '' : v)}
                       >
-                        <SelectTrigger className="text-sm"><SelectValue placeholder="선택" /></SelectTrigger>
+                        <SelectTrigger className="text-base sm:text-sm"><SelectValue placeholder="선택" /></SelectTrigger>
                         <SelectContent>
                           {CARRIER_OPTIONS.map((o) => (
                             <SelectItem key={o || '_none'} value={o || '_none'}>{o || '선택 없음'}</SelectItem>
@@ -652,7 +652,7 @@ export function SalesTable({ initialData }: Props) {
               {/* 오른쪽 절반: 비고 */}
               <div>
                 <Label className="text-xs text-slate-500 block mb-1.5">비고(매매)</Label>
-                <Textarea {...register('memo')} rows={2} className="text-sm resize-none" />
+                <Textarea {...register('memo')} rows={2} className="text-base sm:text-sm resize-none" />
               </div>
             </div>
           </div>
@@ -711,12 +711,12 @@ export function SalesTable({ initialData }: Props) {
               <div className="space-y-3">
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">이름/전화/주소 포함</Label>
-                  <Input value={fSearch} onChange={(e) => setFSearch(e.target.value)} placeholder="검색어..." className="text-sm" />
+                  <Input value={fSearch} onChange={(e) => setFSearch(e.target.value)} placeholder="검색어..." className="text-base sm:text-sm" />
                 </div>
                 <div>
                   <Label className="text-xs text-slate-500 block mb-1.5">구분</Label>
                   <Select value={fCategory || '_all'} onValueChange={(v) => setFCategory(v === '_all' ? '' : v)}>
-                    <SelectTrigger className="text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
+                    <SelectTrigger className="text-base sm:text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="_all">전체</SelectItem>
                       {CATEGORY_OPTIONS.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}
@@ -729,31 +729,31 @@ export function SalesTable({ initialData }: Props) {
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">매가 이상</Label>
-                    <Input type="number" value={fPriceMin} onChange={(e) => setFPriceMin(e.target.value)} placeholder="0" className="text-sm" />
+                    <Input type="number" value={fPriceMin} onChange={(e) => setFPriceMin(e.target.value)} placeholder="0" className="text-base sm:text-sm" />
                   </div>
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">매가 이하</Label>
-                    <Input type="number" value={fPriceMax} onChange={(e) => setFPriceMax(e.target.value)} placeholder="0" className="text-sm" />
+                    <Input type="number" value={fPriceMax} onChange={(e) => setFPriceMax(e.target.value)} placeholder="0" className="text-base sm:text-sm" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">보증금 이상</Label>
-                    <Input type="number" value={fDepMin} onChange={(e) => setFDepMin(e.target.value)} placeholder="0" className="text-sm" />
+                    <Input type="number" value={fDepMin} onChange={(e) => setFDepMin(e.target.value)} placeholder="0" className="text-base sm:text-sm" />
                   </div>
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">보증금 이하</Label>
-                    <Input type="number" value={fDepMax} onChange={(e) => setFDepMax(e.target.value)} placeholder="0" className="text-sm" />
+                    <Input type="number" value={fDepMax} onChange={(e) => setFDepMax(e.target.value)} placeholder="0" className="text-base sm:text-sm" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">월세 이상</Label>
-                    <Input type="number" value={fMonMin} onChange={(e) => setFMonMin(e.target.value)} placeholder="0" className="text-sm" />
+                    <Input type="number" value={fMonMin} onChange={(e) => setFMonMin(e.target.value)} placeholder="0" className="text-base sm:text-sm" />
                   </div>
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">월세 이하</Label>
-                    <Input type="number" value={fMonMax} onChange={(e) => setFMonMax(e.target.value)} placeholder="0" className="text-sm" />
+                    <Input type="number" value={fMonMax} onChange={(e) => setFMonMax(e.target.value)} placeholder="0" className="text-base sm:text-sm" />
                   </div>
                 </div>
               </div>
@@ -762,21 +762,21 @@ export function SalesTable({ initialData }: Props) {
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">토지(평) 이상</Label>
-                    <Input type="number" step="0.01" value={fLandMin} onChange={(e) => setFLandMin(e.target.value)} placeholder="0.00" className="text-sm" />
+                    <Input type="number" step="0.01" value={fLandMin} onChange={(e) => setFLandMin(e.target.value)} placeholder="0.00" className="text-base sm:text-sm" />
                   </div>
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">토지(평) 이하</Label>
-                    <Input type="number" step="0.01" value={fLandMax} onChange={(e) => setFLandMax(e.target.value)} placeholder="0.00" className="text-sm" />
+                    <Input type="number" step="0.01" value={fLandMax} onChange={(e) => setFLandMax(e.target.value)} placeholder="0.00" className="text-base sm:text-sm" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">건물(평) 이상</Label>
-                    <Input type="number" step="0.01" value={fBldgMin} onChange={(e) => setFBldgMin(e.target.value)} placeholder="0.00" className="text-sm" />
+                    <Input type="number" step="0.01" value={fBldgMin} onChange={(e) => setFBldgMin(e.target.value)} placeholder="0.00" className="text-base sm:text-sm" />
                   </div>
                   <div>
                     <Label className="text-xs text-slate-500 block mb-1.5">건물(평) 이하</Label>
-                    <Input type="number" step="0.01" value={fBldgMax} onChange={(e) => setFBldgMax(e.target.value)} placeholder="0.00" className="text-sm" />
+                    <Input type="number" step="0.01" value={fBldgMax} onChange={(e) => setFBldgMax(e.target.value)} placeholder="0.00" className="text-base sm:text-sm" />
                   </div>
                 </div>
                 <div className="flex items-end">

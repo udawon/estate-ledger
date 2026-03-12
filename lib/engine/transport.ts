@@ -5,7 +5,7 @@
 import type { CategoryScore, Grade } from '@/types';
 import { GRADE_CONFIG, CATEGORY_WEIGHTS } from '@/types';
 import { searchByCategory, searchByKeyword, KAKAO_CATEGORY, distToWalk } from '@/lib/api/kakao';
-import { fetchNearestHub, hubTimeToTransportScore } from '@/lib/api/tmap';
+import { findNearestHub, hubTimeToTransportScore } from '@/lib/engine/hub-score';
 import { getDistrictScore, getDistrictDetails } from './district-data';
 
 function getGrade(score: number): Grade {
@@ -81,16 +81,17 @@ function calcBusScore(busCount: number, expressBusCount: number): number {
   return 0;
 }
 
-// ─── Kakao + TMAP API 기반 실측 점수 계산 ────────────────────
+// ─── Kakao API 기반 실측 점수 계산 ───────────────────────────
 async function calcFromKakao(lat: number, lng: number): Promise<CategoryScore> {
-  // 병렬: 지하철역(1km), 버스정류장(500m 실측), 광역버스 M버스(1km), 업무지구 통근시간(TMAP)
+  // 병렬: 지하철역(1km), 버스정류장(500m 실측), 광역버스 M버스(1km)
   // 버스정류장: 카카오 카테고리에 BT1 코드 없음 → 키워드 '버스 정류장' 사용 (500m = 도보 6분)
-  const [subwayRes, busRes, expressBusRes, hubResult] = await Promise.all([
+  const [subwayRes, busRes, expressBusRes] = await Promise.all([
     searchByCategory(KAKAO_CATEGORY.지하철역, lat, lng, 1000, 15),
     searchByKeyword('버스 정류장',           lat, lng,  500, 15),
     searchByKeyword('M버스',                 lat, lng, 1000,  5),
-    fetchNearestHub(lat, lng),
   ]);
+  // 업무지구 통근 시간: Haversine 직선거리 추정
+  const hubResult = findNearestHub(lat, lng);
 
   const subways    = subwayRes.places;
   const busCount   = busRes.totalCount;
@@ -130,9 +131,8 @@ async function calcFromKakao(lat: number, lng: number): Promise<CategoryScore> {
     details.push(`반경 500m 버스정류장 ${busCount}개${expressText}`);
   }
 
-  // 직장 접근성 근거
-  const srcLabel = hubResult.isActual ? 'TMAP 실측' : '직선거리 추정';
-  details.push(`최근접 업무지구: ${hubResult.name} (대중교통 ${hubResult.minutes}분 — ${srcLabel})`);
+  // 직장 접근성 근거 (Haversine 직선거리 추정)
+  details.push(`최근접 업무지구: ${hubResult.name} (대중교통 약 ${hubResult.minutes}분 추정)`);
 
   return {
     score,

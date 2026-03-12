@@ -351,7 +351,7 @@ export function RentalTable({ initialData }: Props) {
           onValueChange={(v) => field.onChange(v === '_none' ? '' : v)}
           value={!field.value ? '_none' : (field.value as string)}
         >
-          <SelectTrigger className="h-8 text-sm">
+          <SelectTrigger className="h-8 text-base sm:text-sm">
             <SelectValue placeholder={placeholder ?? '선택'} />
           </SelectTrigger>
           <SelectContent>
@@ -414,7 +414,7 @@ export function RentalTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">접수일 *</Label>
-              <Input type="date" {...register('recv_date')} className="h-8 text-sm" />
+              <Input type="date" {...register('recv_date')} className="h-8 text-base sm:text-sm" />
               {errors.recv_date && <p className="text-xs text-red-500">{errors.recv_date.message}</p>}
             </div>
             <div className="space-y-1">
@@ -427,14 +427,14 @@ export function RentalTable({ initialData }: Props) {
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">호수</Label>
-              <Input {...register('unit_no')} className="h-8 text-sm" />
+              <Input {...register('unit_no')} className="h-8 text-base sm:text-sm" />
             </div>
           </div>
 
           {/* Row 2: 주소 (full) */}
           <div className="space-y-1">
             <Label className="text-xs font-medium text-slate-600 block mb-1.5">주소 *</Label>
-            <Input {...register('addr')} placeholder="서울시 강남구..." className="h-8 text-sm" />
+            <Input {...register('addr')} placeholder="서울시 강남구..." className="h-8 text-base sm:text-sm" />
             {errors.addr && <p className="text-xs text-red-500">{errors.addr.message}</p>}
           </div>
 
@@ -442,7 +442,7 @@ export function RentalTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">비밀번호</Label>
-              <Input {...register('door_pw')} className="h-8 text-sm" />
+              <Input {...register('door_pw')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">입주상태</Label>
@@ -455,15 +455,15 @@ export function RentalTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">계약일자</Label>
-              <Input type="date" {...register('contract_date')} className="h-8 text-sm" />
+              <Input type="date" {...register('contract_date')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">전입일자</Label>
-              <Input type="date" {...register('move_in_date')} className="h-8 text-sm" />
+              <Input type="date" {...register('move_in_date')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">확정일자</Label>
-              <Input type="date" {...register('confirm_date')} className="h-8 text-sm" />
+              <Input type="date" {...register('confirm_date')} className="h-8 text-base sm:text-sm" />
             </div>
             <div />
           </div>
@@ -472,15 +472,15 @@ export function RentalTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">보증금(만원)</Label>
-              <Input type="number" {...register('deposit')} className="h-8 text-sm" />
+              <Input type="number" {...register('deposit')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">월세(만원)</Label>
-              <Input type="number" {...register('monthly')} className="h-8 text-sm" />
+              <Input type="number" {...register('monthly')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">관리비(만원)</Label>
-              <Input type="number" {...register('mng_fee')} className="h-8 text-sm" />
+              <Input type="number" {...register('mng_fee')} className="h-8 text-base sm:text-sm" />
             </div>
             <AutoField label="소계(월세+관리비)" value={subtotal ? subtotal.toLocaleString('ko-KR') : ''} />
           </div>
@@ -489,11 +489,11 @@ export function RentalTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">임대인</Label>
-              <Input {...register('lessor')} className="h-8 text-sm" />
+              <Input {...register('lessor')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">임차인</Label>
-              <Input {...register('lessee')} className="h-8 text-sm" />
+              <Input {...register('lessee')} className="h-8 text-base sm:text-sm" />
             </div>
             <div /><div />
           </div>
@@ -502,11 +502,11 @@ export function RentalTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">성명</Label>
-              <Input {...register('client_name')} className="h-8 text-sm" />
+              <Input {...register('client_name')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">연락처</Label>
-              <Input {...register('client_phone')} className="h-8 text-sm" />
+              <Input {...register('client_phone')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">통신사</Label>
@@ -518,7 +518,7 @@ export function RentalTable({ initialData }: Props) {
           {/* Row 8: 비고 */}
           <div className="space-y-1">
             <Label className="text-xs font-medium text-slate-600 block mb-1.5">비고</Label>
-            <Textarea {...register('memo')} rows={2} className="text-sm resize-none" />
+            <Textarea {...register('memo')} rows={2} className="text-base sm:text-sm resize-none" />
           </div>
 
           {/* 버튼 */}
@@ -575,7 +575,7 @@ export function RentalTable({ initialData }: Props) {
               <div className="space-y-1">
                 <Label className="text-xs font-medium text-slate-600 block mb-1.5">구분</Label>
                 <Select value={fCategory || '_all'} onValueChange={(v) => setFCategory(v === '_all' ? '' : v)}>
-                  <SelectTrigger className="h-8 text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
+                  <SelectTrigger className="h-8 text-base sm:text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="_all">전체</SelectItem>
                     {CATEGORY_OPTIONS.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}
@@ -585,7 +585,7 @@ export function RentalTable({ initialData }: Props) {
               <div className="space-y-1">
                 <Label className="text-xs font-medium text-slate-600 block mb-1.5">건물구분</Label>
                 <Select value={fBuilding || '_all'} onValueChange={(v) => setFBuilding(v === '_all' ? '' : v)}>
-                  <SelectTrigger className="h-8 text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
+                  <SelectTrigger className="h-8 text-base sm:text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="_all">전체</SelectItem>
                     {BUILDING_OPTIONS.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}

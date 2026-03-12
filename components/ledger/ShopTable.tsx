@@ -446,7 +446,7 @@ export function ShopTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">접수일 *</Label>
-              <Input type="date" {...register('recv_date')} className="h-8 text-sm" />
+              <Input type="date" {...register('recv_date')} className="h-8 text-base sm:text-sm" />
               {errors.recv_date && <p className="text-xs text-red-500">{errors.recv_date.message}</p>}
             </div>
             <div className="space-y-1">
@@ -458,7 +458,7 @@ export function ShopTable({ initialData }: Props) {
                     onValueChange={(v) => field.onChange(v === '_none' ? '' : v)}
                     value={field.value || '_none'}
                   >
-                    <SelectTrigger className="h-8 text-sm"><SelectValue placeholder="선택" /></SelectTrigger>
+                    <SelectTrigger className="h-8 text-base sm:text-sm"><SelectValue placeholder="선택" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="_none">선택 없음</SelectItem>
                       {TYPE_OPTIONS.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}
@@ -469,18 +469,18 @@ export function ShopTable({ initialData }: Props) {
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">상호</Label>
-              <Input {...register('brand')} className="h-8 text-sm" />
+              <Input {...register('brand')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">용도지역</Label>
-              <Input {...register('zoning')} className="h-8 text-sm" />
+              <Input {...register('zoning')} className="h-8 text-base sm:text-sm" />
             </div>
           </div>
 
           {/* Row 2: 주소 (full) */}
           <div className="space-y-1">
             <Label className="text-xs font-medium text-slate-600 block mb-1.5">주소 *</Label>
-            <Input {...register('addr')} placeholder="서울시 강남구..." className="h-8 text-sm" />
+            <Input {...register('addr')} placeholder="서울시 강남구..." className="h-8 text-base sm:text-sm" />
             {errors.addr && <p className="text-xs text-red-500">{errors.addr.message}</p>}
           </div>
 
@@ -488,19 +488,19 @@ export function ShopTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">해당층</Label>
-              <Input {...register('floor_this')} className="h-8 text-sm" />
+              <Input {...register('floor_this')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">전체층</Label>
-              <Input {...register('floors_total')} className="h-8 text-sm" />
+              <Input {...register('floors_total')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">건축년도</Label>
-              <Input type="number" {...register('built_year')} className="h-8 text-sm" />
+              <Input type="number" {...register('built_year')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">연료</Label>
-              <Input {...register('fuel')} placeholder="도시가스/전기..." className="h-8 text-sm" />
+              <Input {...register('fuel')} placeholder="도시가스/전기..." className="h-8 text-base sm:text-sm" />
             </div>
           </div>
 
@@ -508,12 +508,12 @@ export function ShopTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">계약면적(㎡)</Label>
-              <Input type="number" step="0.01" {...register('area_lease_m2')} className="h-8 text-sm" />
+              <Input type="number" step="0.01" {...register('area_lease_m2')} className="h-8 text-base sm:text-sm" />
             </div>
             <AutoField label="계약면적(평)" value={auto.area_lease_py ? fmtF(auto.area_lease_py) : ''} />
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">실면적(㎡)</Label>
-              <Input type="number" step="0.01" {...register('area_net_m2')} className="h-8 text-sm" />
+              <Input type="number" step="0.01" {...register('area_net_m2')} className="h-8 text-base sm:text-sm" />
             </div>
             <AutoField label="실면적(평)" value={auto.area_net_py ? fmtF(auto.area_net_py) : ''} />
           </div>
@@ -522,11 +522,11 @@ export function ShopTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">보증금(만원)</Label>
-              <Input type="number" {...register('deposit')} className="h-8 text-sm" />
+              <Input type="number" {...register('deposit')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">권리금(만원)</Label>
-              <Input type="number" {...register('premium')} className="h-8 text-sm" />
+              <Input type="number" {...register('premium')} className="h-8 text-base sm:text-sm" />
             </div>
             <AutoField label="소계1(보증+권리)" value={auto.subtotal ? fmt(auto.subtotal) : ''} />
             <div /> {/* spacer */}
@@ -534,15 +534,15 @@ export function ShopTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">월세(만원)</Label>
-              <Input type="number" {...register('monthly')} className="h-8 text-sm" />
+              <Input type="number" {...register('monthly')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">VAT(만원)</Label>
-              <Input type="number" {...register('vat')} className="h-8 text-sm" />
+              <Input type="number" {...register('vat')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">관리비(만원)</Label>
-              <Input type="number" {...register('mng_fee')} className="h-8 text-sm" />
+              <Input type="number" {...register('mng_fee')} className="h-8 text-base sm:text-sm" />
             </div>
             <AutoField label="소계2(월+VAT+관)" value={auto.subtotal2 ? fmt(auto.subtotal2) : ''} />
           </div>
@@ -558,11 +558,11 @@ export function ShopTable({ initialData }: Props) {
           <div className="grid grid-cols-4 gap-3">
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">성명</Label>
-              <Input {...register('client_name')} className="h-8 text-sm" />
+              <Input {...register('client_name')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">연락처</Label>
-              <Input {...register('client_phone')} className="h-8 text-sm" />
+              <Input {...register('client_phone')} className="h-8 text-base sm:text-sm" />
             </div>
             <div className="space-y-1">
               <Label className="text-xs font-medium text-slate-600 block mb-1.5">통신사</Label>
@@ -573,7 +573,7 @@ export function ShopTable({ initialData }: Props) {
                     onValueChange={(v) => field.onChange(v === '_none' ? '' : v)}
                     value={field.value || '_none'}
                   >
-                    <SelectTrigger className="h-8 text-sm"><SelectValue placeholder="선택" /></SelectTrigger>
+                    <SelectTrigger className="h-8 text-base sm:text-sm"><SelectValue placeholder="선택" /></SelectTrigger>
                     <SelectContent>
                       {CARRIER_OPTIONS.map((o) => (
                         <SelectItem key={o || '_none'} value={o || '_none'}>{o || '선택 없음'}</SelectItem>
@@ -589,7 +589,7 @@ export function ShopTable({ initialData }: Props) {
           {/* Row 8: 비고 */}
           <div className="space-y-1">
             <Label className="text-xs font-medium text-slate-600 block mb-1.5">비고</Label>
-            <Textarea {...register('memo')} rows={2} className="text-sm resize-none" />
+            <Textarea {...register('memo')} rows={2} className="text-base sm:text-sm resize-none" />
           </div>
 
           {/* 버튼 */}
@@ -646,7 +646,7 @@ export function ShopTable({ initialData }: Props) {
               <div className="space-y-1">
                 <Label className="text-xs font-medium text-slate-600 block mb-1.5">종류</Label>
                 <Select value={fType || '_all'} onValueChange={(v) => setFType(v === '_all' ? '' : v)}>
-                  <SelectTrigger className="h-8 text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
+                  <SelectTrigger className="h-8 text-base sm:text-sm"><SelectValue placeholder="전체" /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="_all">전체</SelectItem>
                     {TYPE_OPTIONS.map((o) => <SelectItem key={o} value={o}>{o}</SelectItem>)}

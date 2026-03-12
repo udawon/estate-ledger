@@ -5,7 +5,7 @@
 import type { CategoryScore, Grade } from '@/types';
 import { GRADE_CONFIG, CATEGORY_WEIGHTS } from '@/types';
 import { searchByCategory, KAKAO_CATEGORY } from '@/lib/api/kakao';
-import { fetchNearestHub, hubTimeToJobScore } from '@/lib/api/tmap';
+import { findNearestHub, hubTimeToJobScore } from '@/lib/engine/hub-score';
 import { isKosisConfigured, fetchIncomeGrade } from '@/lib/api/kosis';
 import { getDistrictScore, getDistrictDetails } from './district-data';
 
@@ -72,17 +72,18 @@ function calcUnivHospitalScore(
   return { score, list };
 }
 
-// ─── Kakao + TMAP API 기반 실측 점수 계산 ────────────────────
+// ─── Kakao API 기반 실측 점수 계산 ───────────────────────────
 async function calcFromKakao(
   lat: number,
   lng: number,
   district: string,
 ): Promise<CategoryScore> {
-  // 대학·종합병원(Kakao) + 업무지구 통근 시간(TMAP) + KOSIS 소득 병렬 조회
+  // 대학·종합병원(Kakao) + KOSIS 소득 병렬 조회
   // 반경 5km: 도심 병원은 3km 밖에 있어도 접근 가능 (서울성모·세브란스 등)
-  const [bigHospRes, hubResult, incomeData] = await Promise.all([
+  // 업무지구 통근 시간: Haversine 직선거리 추정 (동기)
+  const hubResult = findNearestHub(lat, lng);
+  const [bigHospRes, incomeData] = await Promise.all([
     searchByCategory(KAKAO_CATEGORY.병원, lat, lng, 5000, 15),
-    fetchNearestHub(lat, lng),
     isKosisConfigured() ? fetchIncomeGrade(district) : Promise.resolve(null),
   ]);
 
@@ -100,8 +101,7 @@ async function calcFromKakao(
 
   // 세부 근거 생성
   const details: string[] = [];
-  const srcLabel = hubResult.isActual ? 'TMAP 실측' : '직선거리 추정';
-  details.push(`최근접 업무지구: ${hubResult.name} (대중교통 ${hubResult.minutes}분 — ${srcLabel})`);
+  details.push(`최근접 업무지구: ${hubResult.name} (대중교통 약 ${hubResult.minutes}분 추정)`);
 
   if (hospList.length > 0) {
     details.push(`반경 3km 대학·종합병원: ${hospList.join(', ')}`);
